@@ -1,0 +1,85 @@
+version: '3'
+services:
+  schedular-service:
+    container_name: schedular-service
+    env_file: ./workspace/schedular-service/.env
+    build:
+      context: ./workspace/schedular-service
+      dockerfile: .docker/Dockerfile
+    volumes:
+      - ./workspace/schedular-service:/app:rw,delegated
+      - type: bind
+        source: C:/alwin/soft/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
+        target: /var/app_ds
+    expose:
+      - "9999"
+    labels:
+      - "traefik.enable=false"   
+
+  schedular-service2:
+    container_name: schedular-service2
+    env_file: ./workspace/schedular-service/.env
+    build:
+      context: ./workspace/schedular-service
+      dockerfile: .docker/Dockerfile
+    volumes:
+      - ./workspace/schedular-service:/app:rw,delegated
+      - type: bind
+        source: C:/alwin/soft/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
+        target: /var/app_ds
+    expose:
+      - "9999"
+    labels:
+      - "traefik.enable=false"   
+
+  schedular-service3:
+    container_name: schedular-service3
+    env_file: ./workspace/schedular-service/.env
+    build:
+      context: ./workspace/schedular-service
+      dockerfile: .docker/Dockerfile
+    volumes:
+      - ./workspace/schedular-service:/app:rw,delegated
+      - type: bind
+        source: C:/alwin/soft/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
+        target: /var/app_ds
+    expose:
+      - "9999"
+    labels:
+      - "traefik.enable=false"   
+
+  schedular-service4:
+    container_name: schedular-service4
+    env_file: ./workspace/schedular-service/.env
+    build:
+      context: ./workspace/schedular-service
+      dockerfile: .docker/Dockerfile
+    volumes:
+      - ./workspace/schedular-service:/app:rw,delegated
+      - type: bind
+        source: C:/alwin/soft/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
+        target: /var/app_ds
+    expose:
+      - "9999"
+    labels:
+      - "traefik.enable=false"  
+
+  schedular-service5:
+    container_name: schedular-service5
+    env_file: ./workspace/schedular-service/.env
+    build:
+      context: ./workspace/schedular-service
+      dockerfile: .docker/Dockerfile
+    volumes:
+      - ./workspace/schedular-service:/app:rw,delegated
+      - type: bind
+        source: C:/alwin/soft/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
+        target: /var/app_ds
+    expose:
+      - "9999"
+    labels:
+      - "traefik.enable=false"  
+
+volumes: 
+  db_data:
+  redis_data:
