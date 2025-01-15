@@ -1,0 +1,51 @@
+FROM mcr.microsoft.com/powershell:7.2-ubuntu-20.04
+
+ARG APP_NAME
+ENV APP_NAME=$APP_NAME
+ENV TZ=Asia/Jakarta
+
+# Update and install dependencies using apt-get
+RUN apt-get update -y && apt-get install -y \
+    curl \
+    git \
+    gcc \
+    g++ \
+    tzdata \
+    libstdc++6 \
+    libc6-dev \
+    zlib1g-dev \
+    libssl-dev \
+    libicu-dev \
+    libkrb5-dev \
+    libcurl4-openssl-dev \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# Verify PowerShell installation
+RUN pwsh --version
+
+# Set timezone
+RUN cp /usr/share/zoneinfo/${TZ} /etc/localtime && echo "${TZ}" > /etc/timezone
+
+# Set working directory
+WORKDIR /app
+
+# Copy tools and scripts
+RUN mkdir -p /go/_tools
+ADD .docker/config/build.sh /go/_tools
+ADD .docker/config/reflex.conf /go/_tools
+COPY Extract-Report.sh /app/
+
+# Provide execution permissions to scripts
+RUN chmod +x /go/_tools/build.sh
+RUN chmod +x /app/Extract-Report.sh
+
+# Download and install Reflex
+# RUN go install github.com/cespare/reflex@latest
+
+# Add the wait script to the image
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.5.0/wait /wait
+RUN chmod +x /wait
+
+# CMD will run the wait script first and then reflex
+CMD /wait && /bin/bash /app/Extract-Report.sh

@@ -1,0 +1,21 @@
+# Development files
+.glide
+vendor
+
+# OS or Editor folders
+.DS_Store
+Thumbs.db
+logs/
+files/*
+!files/.gitkeep
+/vendor/
+.idea/
+
+docker-build.sh
+docker-update.sh
+
+.env
+cover.out
+.gz
+testcompress
+testcompress.gz
