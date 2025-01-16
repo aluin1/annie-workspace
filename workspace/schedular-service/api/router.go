@@ -1,9 +1,6 @@
 package api
 
 import (
-	"encoding/json"
-	"net/http"
-
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"gopkg.in/resty.v1"
@@ -28,18 +25,4 @@ func ConfigRouter() *echo.Echo {
 
 func ping(ctx echo.Context) (err error) {
 	return nil
-}
-
-func constructIsoError(isoData map[string]string, responseCode string) map[string]string {
-	isoData["0"] = "0210"
-	isoData["39"] = responseCode
-	return isoData
-}
-
-// streamJSON stream JSON as response
-func StreamJSON(ctx echo.Context, v interface{}) error {
-	ctx.Response().Header().Set(echo.HeaderContentType, echo.MIMEApplicationJSONCharsetUTF8)
-	ctx.Response().Header().Set("Cache-Control", "no-cache")
-	ctx.Response().WriteHeader(http.StatusOK)
-	return json.NewEncoder(ctx.Response()).Encode(v)
 }

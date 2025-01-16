@@ -62,7 +62,7 @@ func GetCase() (status bool) {
 			// // Menjalankan perintah
 			// err := cmd.Run()
 			// if err != nil {
-			// 	fmt.Printf("Error executing %s: %v\n", cmdFile, err)
+			// 	fmt.Infof("Error executing %s: %v\n", cmdFile, err)
 			// 	return
 			// }
 
@@ -75,13 +75,13 @@ func GetCase() (status bool) {
 
 			output, err := cmd.CombinedOutput()
 			if err != nil {
-				log.Printf("Error: %v\n", err)
+				log.Infof("Error: %v\n", err)
 				return
 			}
 
-			log.Printf("message info: %s", string(output))
+			log.Infof("message info: %s", string(output))
 		}
-		return
+		// return
 	} else {
 		// response is ERROR
 		status = false
