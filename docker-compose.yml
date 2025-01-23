@@ -9,7 +9,7 @@ services:
     volumes:
       - ./workspace/schedular-service:/app:rw,delegated
       - type: bind
-        source: C:/alwin/soft/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
+        source: C:/app/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
         target: /var/app_ds
     expose:
       - "9999"
@@ -25,7 +25,7 @@ services:
     volumes:
       - ./workspace/schedular-service:/app:rw,delegated
       - type: bind
-        source: C:/alwin/soft/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
+        source: C:/app/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
         target: /var/app_ds
     expose:
       - "9999"
@@ -41,7 +41,7 @@ services:
     volumes:
       - ./workspace/schedular-service:/app:rw,delegated
       - type: bind
-        source: C:/alwin/soft/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
+        source: C:/app/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
         target: /var/app_ds
     expose:
       - "9999"
@@ -57,7 +57,7 @@ services:
     volumes:
       - ./workspace/schedular-service:/app:rw,delegated
       - type: bind
-        source: C:/alwin/soft/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
+        source: C:/app/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
         target: /var/app_ds
     expose:
       - "9999"
@@ -73,7 +73,7 @@ services:
     volumes:
       - ./workspace/schedular-service:/app:rw,delegated
       - type: bind
-        source: C:/alwin/soft/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
+        source: C:/app/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
         target: /var/app_ds
     expose:
       - "9999"
