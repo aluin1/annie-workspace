@@ -1,84 +1,135 @@
 version: '3'
 services:
-  schedular-service:
-    container_name: schedular-service
-    env_file: ./workspace/schedular-service/.deployment/.env
-    build:
-      context: ./workspace/schedular-service
-      dockerfile: .docker/Dockerfile
-    volumes:
-      - ./workspace/schedular-service:/app:rw,delegated
-      - type: bind
-        source: C:/alwin/soft/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
-        target: /var/app_ds
-    expose:
-      - "9999"
-    labels:
-      - "traefik.enable=false"   
+  # schedular-service:
+  #   container_name: schedular-service
+  #   env_file: ./workspace/schedular-service/.deployment/.env
+  #   build:
+  #     context: ./workspace/schedular-service
+  #     dockerfile: .docker/Dockerfile
+  #   volumes:
+  #     - ./workspace/schedular-service:/app:rw,delegated
+  #     - type: bind
+  #       source: C:/alwin/soft/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
+  #       target: /var/app_ds
+  #   expose:
+  #     - "9999"
+  #   labels:
+  #     - "traefik.enable=false"   
 
-  schedular-service2:
-    container_name: schedular-service2
-    env_file: ./workspace/schedular-service/.deployment/.env
-    build:
-      context: ./workspace/schedular-service
-      dockerfile: .docker/Dockerfile
-    volumes:
-      - ./workspace/schedular-service:/app:rw,delegated
-      - type: bind
-        source: C:/alwin/soft/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
-        target: /var/app_ds
-    expose:
-      - "9999"
-    labels:
-      - "traefik.enable=false"   
+  # schedular-service2:
+  #   container_name: schedular-service2
+  #   env_file: ./workspace/schedular-service/.deployment/.env
+  #   build:
+  #     context: ./workspace/schedular-service
+  #     dockerfile: .docker/Dockerfile
+  #   volumes:
+  #     - ./workspace/schedular-service:/app:rw,delegated
+  #     - type: bind
+  #       source: C:/alwin/soft/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
+  #       target: /var/app_ds
+  #   expose:
+  #     - "9999"
+  #   labels:
+  #     - "traefik.enable=false"   
 
-  schedular-service3:
-    container_name: schedular-service3
-    env_file: ./workspace/schedular-service/.deployment/.env
-    build:
-      context: ./workspace/schedular-service
-      dockerfile: .docker/Dockerfile
-    volumes:
-      - ./workspace/schedular-service:/app:rw,delegated
-      - type: bind
-        source: C:/alwin/soft/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
-        target: /var/app_ds
-    expose:
-      - "9999"
-    labels:
-      - "traefik.enable=false"   
+  # schedular-service3:
+  #   container_name: schedular-service3
+  #   env_file: ./workspace/schedular-service/.deployment/.env
+  #   build:
+  #     context: ./workspace/schedular-service
+  #     dockerfile: .docker/Dockerfile
+  #   volumes:
+  #     - ./workspace/schedular-service:/app:rw,delegated
+  #     - type: bind
+  #       source: C:/alwin/soft/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
+  #       target: /var/app_ds
+  #   expose:
+  #     - "9999"
+  #   labels:
+  #     - "traefik.enable=false"   
 
-  schedular-service4:
-    container_name: schedular-service4
-    env_file: ./workspace/schedular-service/.deployment/.env
+  # schedular-service4:
+  #   container_name: schedular-service4
+  #   env_file: ./workspace/schedular-service/.deployment/.env
+  #   build:
+  #     context: ./workspace/schedular-service
+  #     dockerfile: .docker/Dockerfile
+  #   volumes:
+  #     - ./workspace/schedular-service:/app:rw,delegated
+  #     - type: bind
+  #       source: C:/alwin/soft/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
+  #       target: /var/app_ds
+  #   expose:
+  #     - "9999"
+  #   labels:
+  #     - "traefik.enable=false"  
+
+  # schedular-service5:
+  #   container_name: schedular-service5
+  #   env_file: ./workspace/schedular-service/.deployment/.env
+  #   build:
+  #     context: ./workspace/schedular-service
+  #     dockerfile: .docker/Dockerfile
+  #   volumes:
+  #     - ./workspace/schedular-service:/app:rw,delegated
+  #     - type: bind
+  #       source: C:/alwin/soft/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
+  #       target: /var/app_ds
+  #   expose:
+  #     - "9999"
+  #   labels:
+  #     - "traefik.enable=false"  
+  
+  case-service:
+    container_name: case-service
+    env_file: ./workspace/case-service/.deployment/.env
     build:
-      context: ./workspace/schedular-service
+      context: ./workspace/case-service
       dockerfile: .docker/Dockerfile
     volumes:
-      - ./workspace/schedular-service:/app:rw,delegated
+      - ./workspace/case-service:/app:rw,delegated
       - type: bind
-        source: C:/alwin/soft/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
-        target: /var/app_ds
-    expose:
-      - "9999"
+        source: ./workspace/case-service/attach
+        target: /var/attach
+    ports:
+      - "8081:9999"
     labels:
       - "traefik.enable=false"  
 
-  schedular-service5:
-    container_name: schedular-service5
-    env_file: ./workspace/schedular-service/.deployment/.env
+      
+  dashboard-case-service:
+    container_name: dashboard-case-service
     build:
-      context: ./workspace/schedular-service
+      context: ./workspace/dashboard-case-service
       dockerfile: .docker/Dockerfile
-    volumes:
-      - ./workspace/schedular-service:/app:rw,delegated
-      - type: bind
-        source: C:/alwin/soft/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
-        target: /var/app_ds
-    expose:
-      - "9999"
+    env_file:
+      - ./workspace/dashboard-case-service/.deployment/.env
+    volumes: 
+      - ./workspace/dashboard-case-service:/var/www/html
+    ports:
+      - "9080:8080"
     labels:
-      - "traefik.enable=false"  
+      - "traefik.enable=false"
+
+  # postgres:
+  #   image: postgres
+  #   restart: always
+  #   environment:
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: Qwerty123
+  #     POSTGRES_DB: alwin
+  #   ports:
+  #     - "5432:5432"
+  # app:
+  #   build: .
+  #   depends_on:
+  #     - postgres
+  #   environment:
+  #     DATABASE_HOST: postgres
+  #     DATABASE_PORT: 5432
+  #     DATABASE_NAME: alwin
+  #     USERNAME_DB: postgres
+  #     PASSWORD_DB: Qwerty123
 
 # volumes: 
 #   db_data:

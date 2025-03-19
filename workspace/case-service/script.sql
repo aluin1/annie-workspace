@@ -1,0 +1,35 @@
+CREATE TABLE IF NOT EXISTS public.tb_case (
+    case_id BIGINT NOT NULL,
+    customer_number VARCHAR(100) COLLATE pg_catalog."default",
+    doctor_name VARCHAR(100) COLLATE pg_catalog."default",
+    email VARCHAR(100) COLLATE pg_catalog."default",
+    previous_case VARCHAR(10) COLLATE pg_catalog."default",
+    previous_case_number VARCHAR(100) COLLATE pg_catalog."default",
+    patient_name VARCHAR(100) COLLATE pg_catalog."default",
+    dob VARCHAR(100) COLLATE pg_catalog."default",
+    height_of_patient VARCHAR(100) COLLATE pg_catalog."default",
+    gender VARCHAR(10) COLLATE pg_catalog."default",
+    race VARCHAR(100) COLLATE pg_catalog."default",
+    package_list VARCHAR(100) COLLATE pg_catalog."default",
+    lateral_xray_date VARCHAR(100) COLLATE pg_catalog."default",
+    consult_date VARCHAR(100) COLLATE pg_catalog."default",
+    missing_teeth VARCHAR(100) COLLATE pg_catalog."default",
+    adenoids_removed VARCHAR(10) COLLATE pg_catalog."default",
+    comment VARCHAR(1000) COLLATE pg_catalog."default",
+    lateral_xray_image VARCHAR(1000) COLLATE pg_catalog."default",
+    frontal_xray_image VARCHAR(1000) COLLATE pg_catalog."default",
+    lower_arch_image VARCHAR(1000) COLLATE pg_catalog."default",
+    upper_arch_image VARCHAR(1000) COLLATE pg_catalog."default",
+    handwrist_xray_image VARCHAR(1000) COLLATE pg_catalog."default",
+    panoramic_xray_image VARCHAR(1000) COLLATE pg_catalog."default",
+    additional_record_1 VARCHAR(1000) COLLATE pg_catalog."default",
+    additional_record_2 VARCHAR(1000) COLLATE pg_catalog."default",
+    additional_record_3 VARCHAR(1000) COLLATE pg_catalog."default",
+    additional_record_4 VARCHAR(1000) COLLATE pg_catalog."default",
+    additional_record_5 VARCHAR(1000) COLLATE pg_catalog."default",
+    time_create TIMESTAMP(6) WITHOUT TIME ZONE,
+    CONSTRAINT tb_case_pkey PRIMARY KEY (case_id)
+) TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.tb_case
+    OWNER TO postgres;

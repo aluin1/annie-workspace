@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Forms - Kaiadmin Bootstrap 5 Admin Dashboard</title>
+    <meta
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+      name="viewport"
+    />
+    <link
+      rel="icon"
+      href="../assets/img/kaiadmin/favicon.ico"
+      type="image/x-icon"
+    />
+
+    <!-- Fonts and icons -->
+    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+      WebFont.load({
+        google: { families: ["Public Sans:300,400,500,600,700"] },
+        custom: {
+          families: [
+            "Font Awesome 5 Solid",
+            "Font Awesome 5 Regular",
+            "Font Awesome 5 Brands",
+            "simple-line-icons",
+          ],
+          urls: ["../assets/css/fonts.min.css"],
+        },
+        active: function () {
+          sessionStorage.fonts = true;
+        },
+      });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/plugins.min.css" />
+    <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
+ 
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar" data-background-color="dark">
+        <div class="sidebar-logo">
+          <!-- Logo Header -->
+          <div class="logo-header" data-background-color="dark">
+            <a href="../index.html" class="logo">
+              <!-- <img
+                src="../assets/img/kaiadmin/logo_light.svg"
+                alt="navbar brand"
+                class="navbar-brand"
+                height="20"
+              /> -->
+            </a>
+            <div class="nav-toggle">
+              <button class="btn btn-toggle toggle-sidebar">
+                <i class="gg-menu-right"></i>
+              </button>
+              <button class="btn btn-toggle sidenav-toggler">
+                <i class="gg-menu-left"></i>
+              </button>
+            </div>
+            <button class="topbar-toggler more">
+              <i class="gg-more-vertical-alt"></i>
+            </button>
+          </div>
+          <!-- End Logo Header -->
+        </div>
+        <div class="sidebar-wrapper scrollbar scrollbar-inner">
+          <div class="sidebar-content">
+            <ul class="nav nav-secondary">
+              <li class="nav-item">
+                <a
+                  data-bs-toggle="collapse"
+                  href="#dashboard"
+                  class="collapsed"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-home"></i>
+                  <p>Dashboard</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="dashboard">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="../../index.html">
+                        <span class="sub-item">Dashboard 1</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-section">
+                <span class="sidebar-mini-icon">
+                  <i class="fa fa-ellipsis-h"></i>
+                </span>
+                <h4 class="text-section">Data</h4>
+              </li> 
+            <li class="nav-item active submenu">
+                <a data-bs-toggle="collapse" href="#forms">
+                  <i class="fas fa-pen-square"></i>
+                  <p>Case</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse show" id="forms">
+                  <ul class="nav nav-collapse">
+                    <li class="active">
+                      <a href="../forms/forms.html">
+                        <span class="sub-item">Input Case</span>
+                      </a>
+                    </li>                    
+                    <li>
+                      <a href="../forms/datatables.html">
+                        <span class="sub-item">Data Case</span>
+                      </a>
+                    </li>
+
+                  </ul>
+                </div>
+              </li> 
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- End Sidebar -->
+
+      <div class="main-panel"> 
+
+        <div class="container" style=" margin-top: 0px !important;">
+          <div class="page-inner">
+            <!-- <div class="page-header">
+              <h3 class="fw-bold mb-3">Forms</h3>
+              <ul class="breadcrumbs mb-3">
+                <li class="nav-home">
+                  <a href="#">
+                    <i class="icon-home"></i>
+                  </a>
+                </li>
+                <li class="separator">
+                  <i class="icon-arrow-right"></i>
+                </li>
+                <li class="nav-item">
+                  <a href="#">Forms</a>
+                </li>
+                <li class="separator">
+                  <i class="icon-arrow-right"></i>
+                </li>
+                <li class="nav-item">
+                  <a href="#">Basic Form</a>
+                </li>
+              </ul>
+            </div> -->
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card">
+                  <form id="formCase">
+                  <div class="card-header">
+                    <div class="card-title">FMBODS - DR. ANNIE VIP Services</div>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-6 col-lg-4">
+                        <div class="form-group">
+                          <label for="customer_number">Customer Number</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="customer_number"
+                            placeholder="Enter Customer Number"
+                            value="#12345"
+                          />
+                          <small  class="form-text text-muted"
+                            >Forget your Customer Number, Please email us at fmbods@bioprogressive.org</small
+                          >
+                        </div>
+                        <div class="form-group">
+                          <label for="doctor_name">Doctor Name </label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="doctor_name"
+                            placeholder="Enter Doctor Name"
+                            value="dr. alwin"
+                          />
+                          
+                        </div>
+                        <div class="form-group">
+                          <label for="Email">Email</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="email"
+                            placeholder="Enter email"
+                            value="alwinalwin57@gmail.com"
+                          />
+                          
+                        </div> 
+
+                        <div class="form-group">
+                          <label>Is this Previous Case?</label><br />
+                          <div class="d-flex">
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="previous_case"
+                                id="previous_case1"
+                                value="Yes"
+                                checked
+                              />
+                              <label
+                                class="form-check-label"
+                                for="previous_case1"
+                              >
+                                Yes
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="previous_case"
+                                id="previous_case2" 
+                                value="No"
+                              />
+                              <label
+                                class="form-check-label"
+                                for="previous_case2"
+                              >
+                                No
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+ 
+                        <div class="form-group">
+                          <label for="previous_case_number">Previous Case Number</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="previous_case_number"
+                            placeholder="Enter Previous Case Number"
+                            value="#12345"
+                          />
+                          
+                        </div>
+
+
+                        <div class="form-group">
+                          <label for="patient_name">Patient Name</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="patient_name"
+                            placeholder="Enter Patient Name"
+                            value="alwin fauzi"
+                          />
+                          
+                        </div>
+
+                        
+                        <div class="form-group">
+                          <label for="dob">DOB</label>
+                          <input
+                            type="date"
+                            class="form-control"
+                            id="dob" 
+                            name="dob" 
+                            max=""
+                            autocomplete="bday"
+                            value="1990-02-18" 
+                          />
+                          
+                        </div>
+
+                        
+                        <div class="form-group">
+                          <label for="height_of_patient">Height of Patient</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="height_of_patient"
+                            placeholder="Enter Height of Patient"
+                            value="4 ft 6 in"
+                          />
+                          <small  class="form-text text-muted"
+                            >ex: 4 ft 6 in</small
+                          >
+                        </div>
+
+
+                        
+                        <div class="form-group">
+                          <label>Gender</label><br />
+                          <div class="d-flex">
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="gender"
+                                id="gender1"
+                                value="Male"
+                                checked
+                              />
+                              <label
+                                class="form-check-label"
+                                for="gender1"
+                              >
+                              Male
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="gender"
+                                id="gender2" 
+                                value="Female"
+                              />
+                              <label
+                                class="form-check-label"
+                                for="gender2"
+                              >
+                              Female
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+
+                      <div class="col-md-6 col-lg-4">
+
+
+                        <div class="form-group">
+                          <label for="defaultSelect">Race</label>
+                          <select
+                            class="form-select form-control"
+                            id="race"
+                          >
+                          <option value="">Choose</option> 
+                            <option value="Black">Black</option> 
+                            <option value="Caucasian" selected>Caucasian</option> 
+                            <option value="Caucasian (E)">Caucasian (E)</option> 
+                            <option value="Chinese">Chinese</option> 
+                            <option value="Japanase">Japanase</option> 
+                            <option value="Latin">Latin</option> 
+                            <option value="Mixed">Mixed</option> 
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="defaultSelect">Package List</label>
+                          <select
+                            class="form-select form-control"
+                            id="package_list"
+                          >
+                          <option value="">Choose</option> 
+                            <option value="Black">Black</option> 
+                            <option value="Caucasian" selected>Caucasian</option> 
+                            <option value="Caucasian (E)">Caucasian (E)</option> 
+                            <option value="Chinese">Chinese</option> 
+                            <option value="Japanase">Japanase</option> 
+                            <option value="Latin">Latin</option> 
+                            <option value="Mixed">Mixed</option> 
+                          </select>
+                        </div>
+
+                        
+                        <div class="form-group">
+                          <label for="lateral_xray_date">Lateral X-ray Date</label>
+                          <input
+                            type="date"
+                            class="form-control"
+                            id="lateral_xray_date" 
+                            name="lateral_xray_date" 
+                            max=""
+                            value="2025-03-12" 
+                          />
+                          
+                        </div>
+
+                        <div class="form-group">
+                          <label for="consult_date">Consult Date</label>
+                          <input
+                            type="date"
+                            class="form-control"
+                            id="consult_date" 
+                            name="consult_date" 
+                            max=""
+                            value="2025-03-12" 
+                          />
+                          
+                        </div>
+
+                        
+
+                        <div class="form-group">
+                          <label for="missing_teeth">Missing Teeth</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="missing_teeth" 
+                            value="1"
+                          />
+                          
+                        </div>
+
+
+                        
+                        <div class="form-group">
+                          <label>Adenoids Removed</label><br />
+                          <div class="d-flex">
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="adenoids_removed"
+                                id="adenoids_removed1"
+                                value="No"
+                                checked
+                              />
+                              <label
+                                class="form-check-label"
+                                for="adenoids_removed1"
+                              >
+                              Yes
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="adenoids_removed"
+                                id="adenoids_removed2" 
+                                value="No"
+                              />
+                              <label
+                                class="form-check-label"
+                                for="adenoids_removed2"
+                              >
+                              No
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+ 
+                        <div class="form-group">
+                          <label for="comment">Comment</label>
+                          <textarea class="form-control" id="comment" rows="5">test comment</textarea>
+                        </div>
+
+ 
+                            
+                      </div>
+                      <div class="col-md-6 col-lg-4">
+                        
+                        <div class="form-group">
+                          <label for="lateral_xray_image">Lateral X-Ray Image</label>
+                          <input
+                            type="file"
+                            class="form-control"
+                            id="lateral_xray_image" 
+                          />
+                          
+                        </div>
+
+                        
+                        
+                        <div class="form-group">
+                          <label for="frontal_xray_image">Frontal X-Ray Image</label>
+                          <input
+                            type="file"
+                            class="form-control"
+                            id="frontal_xray_image" 
+                          />
+                          
+                        </div>
+
+                        
+                        <div class="form-group">
+                          <label for="lower_arch_image">Lower Arch Image</label>
+                          <input
+                            type="file"
+                            class="form-control"
+                            id="lower_arch_image" 
+                          />
+                          
+                        </div>
+                        
+                        
+                        <div class="form-group">
+                          <label for="upper_arch_image">Upper Arch Image</label>
+                          <input
+                            type="file"
+                            class="form-control"
+                            id="upper_arch_image" 
+                          />
+                          
+                        </div>
+
+                        
+                        <div class="form-group">
+                          <label for="handwrist_xray_image">HandWrist X-Ray Image</label>
+                          <input
+                            type="file"
+                            class="form-control"
+                            id="handwrist_xray_image" 
+                          />
+                          
+                        </div>
+
+                        
+                        <div class="form-group">
+                          <label for="panoramic_xray_image">Panoramic X-Ray (Panorex) Image</label>
+                          <input
+                            type="file"
+                            class="form-control"
+                            id="panoramic_xray_image" 
+                          />
+                          
+                        </div>
+
+                        
+                        
+                        <div class="form-group">
+                          <label for="additional_record_1">Additional Record 1</label>
+                          <input
+                            type="file"
+                            class="form-control"
+                            id="additional_record_1" 
+                          />
+                          
+                        </div>
+
+                        
+                        
+                        <div class="form-group">
+                          <label for="additional_record_2">Additional Record 2</label>
+                          <input
+                            type="file"
+                            class="form-control"
+                            id="additional_record_2" 
+                          />
+                          
+                        </div>
+
+                        
+                        
+                        <div class="form-group">
+                          <label for="additional_record_3">Additional Record 3</label>
+                          <input
+                            type="file"
+                            class="form-control"
+                            id="additional_record_3" 
+                          />
+                          
+                        </div>
+
+                        
+                        
+                        <div class="form-group">
+                          <label for="additional_record_4">Additional Record 4</label>
+                          <input
+                            type="file"
+                            class="form-control"
+                            id="additional_record_4" 
+                          />
+                          
+                        </div>
+
+                        
+                        
+                        <div class="form-group">
+                          <label for="additional_record_5">Additional Record 5</label>
+                          <input
+                            type="file"
+                            class="form-control"
+                            id="additional_record_5" 
+                          />
+                          
+                        </div>
+
+
+                        
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-action" style="text-align: right;">
+                    <button class="btn btn-info">Submit</button>
+                    <button class="btn btn-danger">Cancel</button>
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+         
+      </div>
+ 
+    </div>
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+    <!-- Chart JS -->
+    <script src="../assets/js/plugin/chart.js/chart.min.js"></script>
+
+    <!-- jQuery Sparkline -->
+    <script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Chart Circle -->
+    <script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+
+    <!-- Bootstrap Notify -->
+    <script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+    
+
+    <!-- jQuery Vector Maps -->
+    <script src="../assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
+    <script src="../assets/js/plugin/jsvectormap/world.js"></script>
+
+    <!-- Google Maps Plugin -->
+    <script src="../assets/js/plugin/gmaps/gmaps.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+    <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+
+
+    <!-- Kaiadmin JS -->
+    <script src="../assets/js/kaiadmin.min.js"></script>
+ 
+
+    <script type="module" src="./script_insert_data_multi_upload.js"></script>
+
+    <script>
+      // Atur nilai maksimal agar pengguna tidak bisa memilih tanggal di masa depan
+      document.getElementById("dob").max = new Date().toISOString().split("T")[0];
+  </script>
+  
+  </body>
+</html>
