@@ -55,14 +55,16 @@ services:
 
   case-service:
     container_name: case-service
-    env_file: ./workspace/case-service/.deployment/.env
+    env_file: .env
     build:
       context: ./workspace/case-service
       dockerfile: .docker/Dockerfile
     volumes:
       - ./workspace/case-service:/app:rw,delegated
       - type: bind
-        source: ./workspace/case-service/attach
+        # source: ./workspace/case-service/attach
+        # source: C:/alwin/soft/annie doc/attach
+        source: C:/inetpub/wwwroot/annievip.ismartdds.com/ANNIEVIP_Case_Folder
         target: /var/attach
     ports:
       - "8081:9999"

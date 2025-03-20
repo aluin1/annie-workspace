@@ -72,7 +72,7 @@ async function fetchData(pageSize = 10, page = 1) {
         result.data_case.forEach((caseItem) => {
             let row = document.createElement("tr");
             row.innerHTML = `
-                <td>${caseItem.case_id} - ${caseItem.customer_number}</td>
+                <td>${caseItem.customer_number}</td>
                 <td>${caseItem.doctor_name}</td>
                 <td>${caseItem.email}</td>
                 <td>${caseItem.patient_name}</td>
