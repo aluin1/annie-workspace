@@ -118,12 +118,16 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             swal.close();
-            swal({
+            Swal.fire({
                 title: "Success",
                 text: `[${response.status} - ${response.statusText}]`,
                 icon: "success",
-                buttons: { confirm: { className: "btn btn-success" } }
-            });
+                confirmButtonText: "OK"
+            }).then(() => {
+                setTimeout(() => {
+                    window.location.href = "../forms/datatables.html"; // Redirect dengan delay 500ms
+                }, 500);
+            });            
 
         } catch (error) {
             swal.close();

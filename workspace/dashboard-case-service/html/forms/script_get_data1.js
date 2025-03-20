@@ -66,6 +66,9 @@ async function fetchData(pageSize = 10, page = 1) {
 
         // 3️⃣ **Populate Table**
         tbody.innerHTML = ""; // Kosongkan tabel sebelum mengisi data
+        
+        // 🔽 **Sort data berdasarkan case_id terbesar** 🔽
+        result.data_case.sort((a, b) => b.case_id - a.case_id); 
         result.data_case.forEach((caseItem) => {
             let row = document.createElement("tr");
             row.innerHTML = `

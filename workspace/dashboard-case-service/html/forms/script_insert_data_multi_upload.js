@@ -120,7 +120,17 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             swal.close();
-            swal({ title: "Success", text: "Case submitted successfully!", icon: "success" });
+            // swal({ title: "Success", text: "Case submitted successfully!", icon: "success" });
+            swal({
+                title: "Success",
+                text: "Case submitted successfully!",
+                icon: "success",
+                button: "OK" // Tombol konfirmasi
+            }).then(() => {
+                window.location.href = "datatables.html"; // Redirect setelah klik OK
+            });
+            
+            
 
         } catch (error) {
             console.error("❌ Error:", error);
