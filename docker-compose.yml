@@ -55,7 +55,7 @@ services:
 
   case-service:
     container_name: case-service
-    env_file: .env
+    env_file: ./workspace/case-service/.deployment/.env
     build:
       context: ./workspace/case-service
       dockerfile: .docker/Dockerfile
