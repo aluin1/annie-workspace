@@ -1,85 +1,58 @@
-version: '3'
+version: '3.8'
+
+networks: 
+  net:
+    external: true
+
 services:
-  # schedular-service:
-  #   container_name: schedular-service
-  #   env_file: ./workspace/schedular-service/.deployment/.env
-  #   build:
-  #     context: ./workspace/schedular-service
-  #     dockerfile: .docker/Dockerfile
-  #   volumes:
-  #     - ./workspace/schedular-service:/app:rw,delegated
-  #     - type: bind
-  #       source: C:/alwin/soft/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
-  #       target: /var/app_ds
-  #   expose:
-  #     - "9999"
-  #   labels:
-  #     - "traefik.enable=false"   
+  traefik:
+    image: traefik:v1.7-alpine  # Gunakan versi Alpine untuk image yang lebih ringan
+    container_name: traefik
+    restart: always
+    command:
+      - "--web"
+      - "--docker"
+      - "--docker.domain=docker.local"
+      - "--docker.watch"
+      - "--defaultentrypoints=http,https"
+      - "--entryPoints=Name:http Address::80 Redirect.EntryPoint:https"
+      - "--entryPoints=Name:https Address::443 TLS"
+      - "--acme=true"
+      - "--acme.email=admin@ismartdds.com"
+      - "--acme.storage=/letsencrypt/acme.json"
+      - "--acme.entryPoint=https"
+      - "--acme.httpChallenge.entryPoint=http"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./letsencrypt:/letsencrypt"
+    networks:
+      - net
 
-  # schedular-service2:
-  #   container_name: schedular-service2
-  #   env_file: ./workspace/schedular-service/.deployment/.env
-  #   build:
-  #     context: ./workspace/schedular-service
-  #     dockerfile: .docker/Dockerfile
-  #   volumes:
-  #     - ./workspace/schedular-service:/app:rw,delegated
-  #     - type: bind
-  #       source: C:/alwin/soft/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
-  #       target: /var/app_ds
-  #   expose:
-  #     - "9999"
-  #   labels:
-  #     - "traefik.enable=false"   
+  dashboard-case-service:
+    container_name: dashboard-case-service
+    build:
+      context: ./workspace/dashboard-case-service
+      dockerfile: .docker/Dockerfile
+    env_file:
+      - ./workspace/dashboard-case-service/.deployment/.env
+    volumes: 
+      - ./workspace/dashboard-case-service:/var/www/html
+    ports:
+      - "9080:8080"
+    #depends_on:
+     # - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:annievip.ismartdds.com"
+      - "traefik.port=8080"
+      - "traefik.docker.network=net"
+    networks:
+      - net
 
-  # schedular-service3:
-  #   container_name: schedular-service3
-  #   env_file: ./workspace/schedular-service/.deployment/.env
-  #   build:
-  #     context: ./workspace/schedular-service
-  #     dockerfile: .docker/Dockerfile
-  #   volumes:
-  #     - ./workspace/schedular-service:/app:rw,delegated
-  #     - type: bind
-  #       source: C:/alwin/soft/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
-  #       target: /var/app_ds
-  #   expose:
-  #     - "9999"
-  #   labels:
-  #     - "traefik.enable=false"   
-
-  # schedular-service4:
-  #   container_name: schedular-service4
-  #   env_file: ./workspace/schedular-service/.deployment/.env
-  #   build:
-  #     context: ./workspace/schedular-service
-  #     dockerfile: .docker/Dockerfile
-  #   volumes:
-  #     - ./workspace/schedular-service:/app:rw,delegated
-  #     - type: bind
-  #       source: C:/alwin/soft/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
-  #       target: /var/app_ds
-  #   expose:
-  #     - "9999"
-  #   labels:
-  #     - "traefik.enable=false"  
-
-  # schedular-service5:
-  #   container_name: schedular-service5
-  #   env_file: ./workspace/schedular-service/.deployment/.env
-  #   build:
-  #     context: ./workspace/schedular-service
-  #     dockerfile: .docker/Dockerfile
-  #   volumes:
-  #     - ./workspace/schedular-service:/app:rw,delegated
-  #     - type: bind
-  #       source: C:/alwin/soft/ANNIEDS-LOG-20241215 # disesuaikan dengan posisi directory App
-  #       target: /var/app_ds
-  #   expose:
-  #     - "9999"
-  #   labels:
-  #     - "traefik.enable=false"  
-  
   case-service:
     container_name: case-service
     env_file: ./workspace/case-service/.deployment/.env
@@ -93,44 +66,16 @@ services:
         target: /var/attach
     ports:
       - "8081:9999"
+   # depends_on:
+    #  - traefik
     labels:
-      - "traefik.enable=false"  
-
-      
-  dashboard-case-service:
-    container_name: dashboard-case-service
-    build:
-      context: ./workspace/dashboard-case-service
-      dockerfile: .docker/Dockerfile
-    env_file:
-      - ./workspace/dashboard-case-service/.deployment/.env
-    volumes: 
-      - ./workspace/dashboard-case-service:/var/www/html
-    ports:
-      - "9080:8080"
-    labels:
-      - "traefik.enable=false"
-
-  # postgres:
-  #   image: postgres
-  #   restart: always
-  #   environment:
-  #     POSTGRES_USER: postgres
-  #     POSTGRES_PASSWORD: Qwerty123
-  #     POSTGRES_DB: alwin
-  #   ports:
-  #     - "5432:5432"
-  # app:
-  #   build: .
-  #   depends_on:
-  #     - postgres
-  #   environment:
-  #     DATABASE_HOST: postgres
-  #     DATABASE_PORT: 5432
-  #     DATABASE_NAME: alwin
-  #     USERNAME_DB: postgres
-  #     PASSWORD_DB: Qwerty123
-
-# volumes: 
-#   db_data:
-#   redis_data:
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:annievipbe.ismartdds.com"
+      - "traefik.port=9999"
+      - "traefik.docker.network=net"
+      - "traefik.frontend.headers.AccessControlAllowMethods=GET,POST,OPTIONS"
+      - "traefik.frontend.headers.AccessControlAllowHeaders=Content-Type,Authorization"
+      - "traefik.frontend.headers.XFrameOptions=SAMEORIGIN"
+      - "traefik.frontend.headers.XXSSProtection=1; mode=block"
+    networks:
+      - net
