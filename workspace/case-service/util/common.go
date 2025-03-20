@@ -6,7 +6,6 @@ import (
 	"case-service/rc"
 	"encoding/base64"
 	"fmt"
-	"io/ioutil"
 	"mime"
 	"mime/multipart"
 	"os"
@@ -77,19 +76,19 @@ func SendEmail(dataCase *model.DataCase) error {
 	recipientEmail := dataCase.Email.String
 
 	// Path file attachment
-	pathAttach := os.Getenv("PATH_ATTACH")
-	attachmentPath := filepath.Join(pathAttach, "image1.jpg")
+	// pathAttach := os.Getenv("PATH_ATTACH")
+	// attachmentPath := filepath.Join(pathAttach, "image1.jpg")
 
 	// Baca file attachment
-	fileData, err := ioutil.ReadFile(attachmentPath)
-	if err != nil {
-		log.Error().Err(err).Msg("Failed to read attachment")
-		return err
-	}
+	// fileData, err := ioutil.ReadFile(attachmentPath)
+	// if err != nil {
+	// 	log.Error().Err(err).Msg("Failed to read attachment")
+	// 	return err
+	// }
 
 	// Encode file ke base64
-	encodedFile := base64.StdEncoding.EncodeToString(fileData)
-	filename := filepath.Base(attachmentPath)
+	// encodedFile := base64.StdEncoding.EncodeToString(fileData)
+	// filename := filepath.Base(attachmentPath)
 
 	// Buat email message dengan attachment
 	var emailBody bytes.Buffer
@@ -97,18 +96,36 @@ func SendEmail(dataCase *model.DataCase) error {
 	defer writer.Close() // Pastikan writer ditutup setelah digunakan
 
 	boundary := writer.Boundary()
-	headers := fmt.Sprintf("From: %s\r\nTo: %s\r\nSubject: Email from FMBODS\r\nMIME-Version: 1.0\r\nContent-Type: multipart/mixed; boundary=%s\r\n\r\n", senderEmail, recipientEmail, boundary)
+	subjectText := fmt.Sprintf("Ticket Number %s FMBODS - Bioprogressive Order Form %s", strconv.Itoa(int(dataCase.CaseID.Int64)), dataCase.PatientName.String)
+	headers := fmt.Sprintf("From: %s\r\nTo: %s\r\nSubject: %s\r\nMIME-Version: 1.0\r\nContent-Type: multipart/mixed; boundary=%s\r\n\r\n", senderEmail, recipientEmail, subjectText, boundary)
 	emailBody.WriteString(headers)
 
 	// Tambahkan teks email
-	textPart := fmt.Sprintf("--%s\r\nContent-Type: text/plain; charset=\"utf-8\"\r\n\r\nHello, this is a test email with an attachment!\r\n", boundary)
-	emailBody.WriteString(textPart)
+
+	htmlContent := HtmlContent(dataCase)
+
+	// textPart := fmt.Sprintf(
+	// 	"--%s\r\nContent-Type: text/plain; charset=\"utf-8\"\r\n\r\nHello, this is a test email with an attachment!\r\n",
+	// 	boundary,
+	// )
+
+	htmlPart := fmt.Sprintf(
+		"--%s\r\nContent-Type: text/html; charset=\"utf-8\"\r\n\r\n%s\r\n",
+		boundary,
+		htmlContent,
+	)
+
+	// Gabungkan bagian teks dan HTML
+	// textPartFull := textPart + htmlPart
+
+	// textPart := fmt.Sprintf("--%s\r\nContent-Type: text/plain; charset=\"utf-8\"\r\n\r\nHello, this is a test email with an attachment!\r\n", boundary)
+	emailBody.WriteString(htmlPart)
 
 	// Tambahkan attachment
-	attachmentPart := fmt.Sprintf(
-		"--%s\r\nContent-Type: application/octet-stream\r\nContent-Transfer-Encoding: base64\r\nContent-Disposition: attachment; filename=\"%s\"\r\n\r\n%s\r\n",
-		boundary, filename, encodedFile)
-	emailBody.WriteString(attachmentPart)
+	// attachmentPart := fmt.Sprintf(
+	// 	"--%s\r\nContent-Type: application/octet-stream\r\nContent-Transfer-Encoding: base64\r\nContent-Disposition: attachment; filename=\"%s\"\r\n\r\n%s\r\n",
+	// 	boundary, filename, encodedFile)
+	// emailBody.WriteString(attachmentPart)
 
 	// Akhiri email dengan boundary akhir
 	emailBody.WriteString(fmt.Sprintf("--%s--\r\n", boundary))
@@ -195,4 +212,172 @@ func ConvertBase64(base64String, directoryPath, fileName string) (string, error)
 
 	fmt.Println("✅ File berhasil disimpan di:", outputPath)
 	return outputPath, nil
+}
+
+func HtmlContent(dataCase *model.DataCase) string {
+	contentBody := `
+	 
+<html >
+  <body>
+
+
+    <h4 style="color:#ffff;padding: 10px; border-radius: 10px;font-size: 15px;  background: linear-gradient(to right, #099cd5, #191d7d)!important;">
+    <b>   Information Ticket</b></h4>
+    <table style="width: 100%; margin:2em;" >
+    <tr style="font-size: 15px; ">
+    <td style="width: 50%; "><b>Ticket Number:</b></td>
+    <td><b>Customer Number:</b></td> 
+    </tr>
+    <tr style="font-size: 15px; "> 
+    <td><span>` + strconv.Itoa(int(dataCase.CaseID.Int64)) + `</span></td>
+    <td><span>` + dataCase.CustomerNumber.String + `</span></td>
+    </tr>
+    
+    <tr style="font-size: 15px; "> 
+    <td><b>Doctor Name:</b></td>
+    <td><b>Email:</b></td> 
+    </tr>
+    <tr style="font-size: 15px; "> 
+    <td><span>` + dataCase.DoctorName.String + `</span></td> 
+    <td><span>` + dataCase.Email.String + `</span></td>
+    </tr>
+
+    <tr style="font-size: 15px; "> 
+    <td><b>Previous Case:</b></td> 
+    <td><b>Previous Case Number:</b></td> 
+    </tr>
+    <tr style="font-size: 15px; "> 
+      <td><span>` + dataCase.PreviousCase.String + `</span></td>
+      <td><span>` + dataCase.PreviousCaseNumber.String + `</span></td>
+    </tr>
+
+      </table>
+        <hr>
+        <h4 style="color:#ffff;padding: 10px; border-radius: 10px;font-size: 15px;  background: linear-gradient(to right, #099cd5, #191d7d)!important;">
+          <b>Information Patient</b></h4>
+          <table style="width: 100%; margin:2em;" >
+          <tr style="font-size: 15px; ">
+          <td style="width: 50%; "><b>Patient Name:</b></td>
+          <td><b>DOB:</b></td> 
+          </tr>
+          <tr style="font-size: 15px; "> 
+          <td><span>` + dataCase.PatientName.String + `</span></td>
+          <td><span>` + dataCase.Dob.String + `</span></td>
+          </tr>
+          
+          <tr style="font-size: 15px; "> 
+          <td><b>Height of Patient:</b></td>
+          <td><b>Gender:</b></td> 
+          </tr>
+          <tr style="font-size: 15px; "> 
+          <td><span>` + dataCase.HeightOfPatient.String + `</span></td> 
+          <td><span>` + dataCase.Gender.String + `</span></td>
+          </tr>
+      
+          <tr style="font-size: 15px; "> 
+          <td><b>Race:</b></td> 
+          <td><b>Package List::</b></td> 
+          </tr>
+          <tr style="font-size: 15px; "> 
+            <td><span>` + dataCase.Race.String + `</span></td>
+            <td><span>` + dataCase.PackageList.String + `</span></td>
+          </tr>
+      
+            </table> 
+              <hr>  
+              <h4 style="color:#ffff;padding: 10px; border-radius: 10px;font-size: 15px;  background: linear-gradient(to right, #099cd5, #191d7d)!important;">
+                <b>Information Consultation</b></h4>
+                <table style="width: 100%; margin:2em;" >
+                <tr style="font-size: 15px; ">
+                <td style="width: 50%; "><b> Lateral X-ray Date:</b></td>
+                <td><b>	Consult Date:</b></td> 
+                </tr>
+                <tr style="font-size: 15px; "> 
+                <td><span>` + dataCase.LateralXrayDate.String + `</span></td>
+                <td><span>` + dataCase.ConsultDate.String + `</span></td>
+                </tr>
+                
+                <tr style="font-size: 15px; "> 
+                <td><b>Missing Teeth:</b></td>
+                <td><b>	Adenoids Removed:</b></td> 
+                </tr>
+                <tr style="font-size: 15px; "> 
+                <td><span>` + dataCase.MissingTeeth.String + `</span></td> 
+                <td><span>` + dataCase.AdenoidsRemoved.String + `</span></td>
+                </tr>
+            
+                <tr style="font-size: 15px; "> 
+                <td><b>Comment:</b></td> 
+                <td> </td> 
+                </tr>
+                <tr style="font-size: 15px; "> 
+                  <td><span>` + dataCase.Comment.String + `</span></td>
+                  <td><span> </span></td>
+                </tr>
+            
+                  </table>
+                    <hr>  
+                          <h4 style="color:#ffff;padding: 10px; border-radius: 10px;font-size: 15px;  background: linear-gradient(to right, #099cd5, #191d7d)!important;">
+                            <b>Information Consultation Detail</b></h4>
+                            <table style="width: 100%; margin:2em;" >
+                            <tr style="font-size: 15px; ">
+                            <td style="width: 50%; "><b> Lateral X-Ray Image:</b></td>
+                            <td><b>	Frontal X-Ray Image:</b></td> 
+                            </tr>
+                            <tr style="font-size: 15px; "> 
+                            <td><span>` + dataCase.LateralXrayImage.String + `</span></td>
+                            <td><span>` + dataCase.FrontalXrayImage.String + `</span></td>
+                            </tr>
+                            
+                            <tr style="font-size: 15px; "> 
+                            <td><b>Lower Arch Image:</b></td>
+                            <td><b>	Upper Arch Image:</b></td> 
+                            </tr>
+                            <tr style="font-size: 15px; "> 
+                            <td><span>` + dataCase.LowerArchImage.String + `</span></td> 
+                            <td><span>` + dataCase.UpperArchImage.String + `</span></td>
+                            </tr>
+
+                            <tr style="font-size: 15px; "> 
+                            <td><b>HandWrist X-Ray Image:</b></td>
+                            <td><b>Panoramic X-Ray (Panorex) Image:</b></td> 
+                            </tr>
+                            <tr style="font-size: 15px; "> 
+                            <td><span>` + dataCase.HandwristXrayImage.String + `</span></td> 
+                            <td><span>` + dataCase.PanoramicXrayImage.String + `</span></td>
+                            </tr>
+                         
+                            <tr style="font-size: 15px; "> 
+                              <td><b>Additional Record 1:</b></td>
+                              <td><b>Additional Record 2:</b></td> 
+                              </tr>
+                              <tr style="font-size: 15px; "> 
+                              <td><span>` + dataCase.AdditionalRecord_1.String + `</span></td> 
+                              <td><span>` + dataCase.AdditionalRecord_2.String + `</span></td>
+                              </tr>
+                         
+                              <tr style="font-size: 15px; "> 
+                                <td><b>Additional Record 3:</b></td>
+                                <td><b>Additional Record 4:</b></td> 
+                                </tr>
+                                <tr style="font-size: 15px; "> 
+                                <td><span>` + dataCase.AdditionalRecord_3.String + `</span></td> 
+                                <td><span>` + dataCase.AdditionalRecord_4.String + `</span></td>
+                                </tr>
+                        
+                                <tr style="font-size: 15px; "> 
+                                  <td><b>Additional Record 5:</b></td>
+                                  <td><b> </b></td> 
+                                  </tr>
+                                  <tr style="font-size: 15px; "> 
+                                  <td><span>` + dataCase.AdditionalRecord_5.String + `</span></td> 
+                                  <td><span> </span></td>
+                                  </tr>
+                              </table>
+                                <hr>
+								</body>
+</html>
+
+`
+	return contentBody
 }
