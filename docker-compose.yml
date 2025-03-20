@@ -37,8 +37,8 @@ services:
     build:
       context: ./workspace/dashboard-case-service
       dockerfile: .docker/Dockerfile
-    env_file:
-      - ./workspace/dashboard-case-service/.deployment/.env
+    # env_file:
+    #   - ./workspace/dashboard-case-service/.deployment/.env
     volumes: 
       - ./workspace/dashboard-case-service:/var/www/html
     ports:
