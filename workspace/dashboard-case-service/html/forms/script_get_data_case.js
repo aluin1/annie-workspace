@@ -79,7 +79,7 @@ async function fetchData(pageSize ,page ) {
                 <td>${caseItem.doctor_name}</td>
                 <td>${caseItem.email}</td>
                 <td>${caseItem.patient_name}</td>
-                <td>${caseItem.dob}</td>
+                <td>${formatDateOnly(caseItem.dob)}</td>
                 <td>${caseItem.gender}</td>
                 <td>
                     <button class="btn btn-info btn-sm detail-btn" data-id='${JSON.stringify(caseItem)}'>
@@ -157,19 +157,19 @@ document.addEventListener("click", function(event) {
                 </tr> 
                 <tr>
                     <td><strong>Previous Case Number:</strong></td><td> ${caseData.previous_case_number}</td>
-                    <td><strong>Consult Date:</strong></td><td> ${caseData.consult_date}</td>
+                    <td><strong>Consult Date:</strong></td><td>${formatDateOnly(caseData.consult_date)}</td>
                 </tr> 
                 <tr>
                     <td><strong>Patient Name:</strong></td><td> ${caseData.patient_name}</td>
                     <td><strong>Missing Teeth:</strong></td><td> ${caseData.missing_teeth}</td>
                 </tr> 
                 <tr>
-                    <td><strong>DOB:</strong></td><td> ${caseData.dob}</td>
+                    <td><strong>DOB:</strong></td><td> ${formatDateOnly(caseData.dob)}</td>
                     <td><strong>Adenoids Removed:</strong></td><td> ${caseData.adenoids_removed}</td>
                 </tr> 
                     <tr>
                     <td><strong>Height:</strong></td><td> ${caseData.height_of_patient}</td>
-                     <td></td><td></td>
+                     <td><strong>Lateral X-ray Date</strong></td><td> ${formatDateOnly(caseData.lateral_xray_date)}</td>
                     </tr> 
                
                     <tr>
@@ -221,5 +221,15 @@ function formatDate(dateString) {
         hour: "2-digit",
         minute: "2-digit",
         hour12: true,
+    });
+}
+
+// ✅ **Fungsi Format Tanggal**
+function formatDateOnly(dateString) {
+    const date = new Date(dateString.replace(" ", "T")); // Pastikan format ISO
+    return date.toLocaleString("en-GB", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
     });
 }
