@@ -9,11 +9,11 @@ console.log("🔗 URL_GET_TOKEN:", URL_GET_TOKEN);
 console.log("🔗 URL_GET_CASE:", URL_GET_CASE);
 
 document.addEventListener('DOMContentLoaded', async function() {
-    fetchData(50); // Ambil data pertama kali dengan page_size = 10
+    fetchData(50,1); // Ambil data pertama kali dengan page_size = 50
 });
 
 // ✅ **Fungsi Fetch Data**
-async function fetchData(pageSize = 10, page = 1) {
+async function fetchData(pageSize ,page ) {
     const tbody = document.querySelector("#multi-filter-select tbody");
     const loadingIndicator = document.getElementById("loading");
 
@@ -68,11 +68,14 @@ async function fetchData(pageSize = 10, page = 1) {
         tbody.innerHTML = ""; // Kosongkan tabel sebelum mengisi data
         
         // 🔽 **Sort data berdasarkan case_id terbesar** 🔽
-        result.data_case.sort((a, b) => b.case_id - a.case_id); 
+        result.data_case.sort((a, b) => b.case_id - a.case_id);         
+        console.log("📊 Sorted case IDs:", result.data_case.map(c => c.case_id));
+        console.log("📥 API Response Data Case:", result.data_case);
+
         result.data_case.forEach((caseItem) => {
             let row = document.createElement("tr");
             row.innerHTML = `
-                <td>${caseItem.customer_number}</td>
+                <td>${caseItem.case_id} - ${caseItem.customer_number}</td>
                 <td>${caseItem.doctor_name}</td>
                 <td>${caseItem.email}</td>
                 <td>${caseItem.patient_name}</td>
@@ -95,8 +98,9 @@ async function fetchData(pageSize = 10, page = 1) {
         }
 
         $("#multi-filter-select").DataTable({
-            pageLength: pageSize, // Gunakan pageSize dari parameter
+            pageLength: 10, // Gunakan pageSize dari parameter
             lengthMenu: [5, 10, 25, 50], // Dropdown Show Entries
+            order: [], // Ini memastikan tidak ada sorting default dari DataTable
             initComplete: function () {
                 this.api().columns().every(function () {
                     var column = this;

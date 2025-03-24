@@ -1,6 +1,9 @@
 package api
 
 import (
+	"case-service/rc"
+	"case-service/util"
+	"fmt"
 	"io"
 	"net/http"
 	"os"
@@ -11,6 +14,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
 	"github.com/rs/zerolog/log"
+	"gopkg.in/asaskevich/govalidator.v8"
 )
 
 // Allowed file extensions
@@ -20,6 +24,31 @@ var allowedExtensions = map[string]bool{
 
 // UploadFiles handles multiple file uploads
 func UploadFiles(c echo.Context) error {
+
+	tokenValue := c.Request().Header.Get(headerAuth)
+
+	// Construct validate param
+	validationParamStruct := util.ValidationParamStruct{
+		Token: tokenValue,
+	}
+
+	respCode := util.CheckValueParamGeneral(validationParamStruct)
+	if !govalidator.IsNull(respCode) {
+		errMessage := rc.ClientResponseTextCase[respCode]
+		return c.JSON(http.StatusBadRequest, map[string]string{"error": errMessage})
+	}
+
+	splitToken := strings.Split(tokenValue, "Bearer ")
+	token := splitToken[1]
+	secretID := os.Getenv("CLIENT_SECRET")
+	_, _, errToken := ValidateJWT(token, secretID)
+	if errToken != nil {
+		log.Info().Msg(fmt.Sprintf("Error Token, %s ", errToken.Error()))
+		errMessage := errToken.Error()
+		return c.JSON(http.StatusUnauthorized, map[string]string{"error": errMessage})
+
+	}
+
 	uploadDir := os.Getenv("PATH_ATTACH")
 	if uploadDir == "" {
 		log.Error().Msg("Upload path is not set")

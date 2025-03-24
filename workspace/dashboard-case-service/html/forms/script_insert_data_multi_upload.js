@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     form.addEventListener('submit', async function (event) {
-        event.preventDefault();
+    event.preventDefault();
+     const token = await getToken(); // 🔑 Ambil token sebelum submit
      let customer_number= getValue('customer_number');
 
         const fileFields = ['lateral_xray_image', 'frontal_xray_image','lower_arch_image',
@@ -52,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
             await Promise.all(fileUploads);
             let uploadedPaths = [];
             if (fileData.length > 0) {
-                uploadedPaths = await uploadFilesToServer(fileData,customer_number);
+                uploadedPaths = await uploadFilesToServer(fileData,customer_number,token);
             }
 
             const filePaths = {};
@@ -60,24 +61,24 @@ document.addEventListener('DOMContentLoaded', function () {
                 filePaths[field] = path;
             });
 
-            // ✅ Pastikan mendapatkan token sebelum lanjut
-            console.log("🔍 Fetching Token...");
-            const tokenResponse = await fetch(URL_GET_TOKEN, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams({
-                    grant_type: "client_credentials",
-                    client_id: CLIENT_ID,
-                    client_secret: CLIENT_SECRET,
-                    scope: "case"
-                })
-            });
+            // // ✅ Pastikan mendapatkan token sebelum lanjut
+            // console.log("🔍 Fetching Token...");
+            // const tokenResponse = await fetch(URL_GET_TOKEN, {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            //     body: new URLSearchParams({
+            //         grant_type: "client_credentials",
+            //         client_id: CLIENT_ID,
+            //         client_secret: CLIENT_SECRET,
+            //         scope: "case"
+            //     })
+            // });
 
-            const tokenData = await tokenResponse.json();
-            console.log("🔑 Token Response:", tokenData);
-            if (!tokenResponse.ok || !tokenData.access_token) {
-                throw new Error(`Token Error: \n${tokenData.response_message || "Unknown error"}`);
-            }
+            // const tokenData = await tokenResponse.json();
+            // console.log("🔑 Token Response:", tokenData);
+            // if (!tokenResponse.ok || !tokenData.access_token) {
+            //     throw new Error(`Token Error: \n${tokenData.response_message || "Unknown error"}`);
+            // }
 
             // ✅ Debug data sebelum dikirim
             const requestData = {
@@ -107,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${tokenData.access_token}`
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(requestData)
             });
@@ -116,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log("✅ Case Submission Response:", result);
 
             if (!response.ok) {
-                throw new Error(`Insert Error: \n${result.response_message}`);
+                throw new Error(`Error Message: \n${result.response_message.replace(/;/g, '\n')}`);
             }
 
             swal.close();
@@ -206,7 +207,7 @@ function compressImage(file) {
     });
 }
 
-async function uploadFilesToServer(files, customer_number) {
+async function uploadFilesToServer(files, customer_number,token) {
     const uploadPromises = files.map(({ field, file }) => {
         const formData = new FormData();
         formData.append('file', file); // Gunakan file asli
@@ -214,6 +215,9 @@ async function uploadFilesToServer(files, customer_number) {
 
         return fetch(URL_UPLOAD_FILE, {
             method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}` // 🔑 Gunakan Token
+            },
             body: formData
         })
         .then(response => response.json())
@@ -221,14 +225,16 @@ async function uploadFilesToServer(files, customer_number) {
             console.log("Server response:", data); // 🔍 DEBUG: Cek response server
 
             if (!data.filePaths || !Array.isArray(data.filePaths) || data.filePaths.length === 0) {
-                throw new Error(`File upload failed: ${JSON.stringify(data)}`);
+                // throw new Error(`File upload failed: ${JSON.stringify(data)}`);
+                  throw new Error(`File upload failed:\n ${data.error || "Unknown error"}`);
             }
 
             return { field, path: data.filePaths[0] }; // Ambil path pertama
         })
         .catch(error => {
             console.error("File upload error:", error);
-            throw new Error("File upload failed");
+            throw new Error(error);
+            
         });
     });
 
@@ -243,4 +249,33 @@ function getValue(id) {
 
 function getCheckedValue(name) {
     return document.querySelector(`input[name="${name}"]:checked`)?.value || '';
+}
+
+async function getToken() {
+    try {
+        console.log("🔍 Fetching Token...");
+
+        const response = await fetch(URL_GET_TOKEN, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({
+                grant_type: "client_credentials",
+                client_id: CLIENT_ID,
+                client_secret: CLIENT_SECRET,
+                scope: "case"
+            })
+        });
+
+        const data = await response.json();
+        console.log("🔑 Get Token Response:", data);
+
+        if (!response.ok || !data.access_token) {
+            throw new Error(`Token Error:\n ${data.response_message || "Unknown error"}`);
+        }
+
+        return data.access_token;
+    } catch (error) {
+        console.error("❌ Error fetching token:", error); 
+        swal({ title: "Error", text: error.message, icon: "error" });
+    }
 }
