@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 async function fetchData( pageSize, page) {
     try {
          
+        swal({ title: "Loading Get Data...", text: "Please wait...", icon: "info", buttons: false });
         const token = await getToken(); // 🔑 Ambil token sebelum submit
         console.log("✅ Token received successfully.");
 
@@ -69,9 +70,12 @@ async function fetchData( pageSize, page) {
             }
 
             // console.log(`✅ Case #${caseItem.case_id} added to category ${caseItem.status_case}`);
+            
+        swal.close();
         });
 
     } catch (error) {
+        swal.close();
         console.error('❌ Error:', error.message);
         swal(error.message, { icon: "error", buttons: { confirm: { className: "btn btn-danger" } } });
     }
@@ -229,6 +233,8 @@ document.addEventListener("click", function(event) {
             console.log("🚀 Sending update request", requestBody);
 
             try {
+                
+        swal({ title: "Loading Update Data Case...", text: "Please wait...", icon: "info", buttons: false });
                 const response = await fetch(URL_EDIT_STATUS_CASE , {
                     method: 'POST',
                     headers: {
@@ -243,19 +249,24 @@ document.addEventListener("click", function(event) {
                 
                 console.log("✅ Status updated successfully", result); 
                 
+        swal.close();
                 swal({
                     title: "Success",
                     text: "Update Data Case successfully!",
                     icon: "success",
                     button: "OK" // Tombol konfirmasi
                 }).then(() => {
-                    window.location.href = "data_case.html"; // Redirect setelah klik OK
-                });
-
+                    // window.location.href = "data_case.html"; // Redirect setelah klik OK
+                    
                 modal.hide();
                 fetchData(); // Refresh data after update
+                });
+
+                // modal.hide();
+                // fetchData(); // Refresh data after update
             } catch (error) {
                 console.error("❌ Error updating status:", error);
+                swal.close();
                 swal({ title: "Error", text: error.message, icon: "error" });
             }
         });
