@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 icon: "success",
                 button: "OK" // Tombol konfirmasi
             }).then(() => {
-                window.location.href = "datatables.html"; // Redirect setelah klik OK
+                window.location.href = "data_case.html"; // Redirect setelah klik OK
             });
             
             
