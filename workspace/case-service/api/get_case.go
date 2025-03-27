@@ -87,6 +87,7 @@ func getCases(c echo.Context) error {
 			MissingTeeth:       getNullString(c.MissingTeeth),
 			AdenoidsRemoved:    getNullString(c.AdenoidsRemoved),
 			Comment:            getNullString(c.Comment),
+			StatusCase:         getNullString(c.StatusCase),
 			LateralXrayImage:   getNullString(c.LateralXrayImage),
 			FrontalXrayImage:   getNullString(c.FrontalXrayImage),
 			LowerArchImage:     getNullString(c.LowerArchImage),

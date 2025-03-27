@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS public.tb_case (
     missing_teeth VARCHAR(100),
     adenoids_removed VARCHAR(10),
     comment TEXT,
+    status_case VARCHAR(2),
     lateral_xray_image TEXT,
     frontal_xray_image TEXT,
     lower_arch_image TEXT,

@@ -31,6 +31,7 @@ type DataCase struct {
 	MissingTeeth       null.String `gorm:"column:missing_teeth"`
 	AdenoidsRemoved    null.String `gorm:"column:adenoids_removed"`
 	Comment            null.String `gorm:"column:comment"`
+	StatusCase         null.String `gorm:"column:status_case"`
 
 	LateralXrayImage   null.String `gorm:"lateral_xray_image"`   //optional
 	FrontalXrayImage   null.String `gorm:"frontal_xray_image"`   //optional

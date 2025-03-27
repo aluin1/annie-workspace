@@ -27,3 +27,13 @@ func ConstructGeneralErrorGetDataJSON(responseCode, errMessage string) GetCaseRe
 
 	return err
 }
+
+// ConstructEditCaseErrorJSON
+func ConstructEditCaseErrorJSON(responseCode, errMessage string, reqBody EditCaseRequest) EditCaseResponse {
+	err := EditCaseResponse{}
+	err.CustomerNumber = reqBody.CustomerNumber
+	err.ResponseCode = responseCode
+	err.ResponseMessage = errMessage
+
+	return err
+}

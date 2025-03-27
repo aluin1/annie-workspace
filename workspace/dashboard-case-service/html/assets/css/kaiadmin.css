@@ -1584,7 +1584,7 @@ body[data-background-color="dark"] .border-top {
 .card, .card-light {
   border-radius: 10px;
   background-color: #ffffff;
-  margin-bottom: 30px;
+  margin-bottom: 10px!important;
   -webkit-box-shadow: 2px 6px 15px 0px rgba(69, 65, 78, 0.1);
   -moz-box-shadow: 2px 6px 15px 0px rgba(69, 65, 78, 0.1);
   box-shadow: 2px 6px 15px 0px rgba(69, 65, 78, 0.1);

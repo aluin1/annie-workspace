@@ -12,4 +12,10 @@ const (
 	NamingAdditionalRecord3  = "_AdditionalRecord3"
 	NamingAdditionalRecord4  = "_AdditionalRecord4"
 	NamingAdditionalRecord5  = "_AdditionalRecord5"
+
+	Submited       = "1"
+	WorkInProgress = "2"
+	Completed      = "3"
+	Abandoned      = "4"
+	Trash          = "5"
 )

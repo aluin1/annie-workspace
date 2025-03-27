@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>DR. ANNIE VIP Services - View Case</title>
+    <title>DR. ANNIE VIP Services - View Data Case</title>
     <meta
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
       name="viewport"
@@ -40,39 +40,19 @@
 
     <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
 
-<!-- DataTables -->
-<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <style>
-
-.dataTables_wrapper .dataTables_paginate .paginate_button {
-    box-sizing: border-box;
-    display: inline-block;
-    min-width: 1.5em;
-    padding: 1px!important;
-    margin-left: 2px;
-    text-align: center;
-    text-decoration: none !important;
-    cursor: pointer;
-    color: transparent!important;
-    border: 1px solid transparent;
-    border-radius: 2px;
+  .card, .card-light {
+    border-radius: 10px;
+    background-color: #fff;
+    margin-bottom: 10px !important;
+    -webkit-box-shadow: 2px 6px 15px 0 rgba(69, 65, 78, .1);
+    -moz-box-shadow: 2px 6px 15px 0 rgba(69, 65, 78, .1);
+    box-shadow: 2px 6px 15px 0 rgba(69, 65, 78, .1);
+    border: 0;
 }
-.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-    background-color:transparent!important;
-    color: transparent!important;
-    border: 1px solid #007bff !important;
-}
-.table thead th {
-  font-size: .95rem;
-  text-transform: capitalize!important;
-  letter-spacing: 1px;
-  padding: 12px 24px !important;
-  border-bottom-width: 1px;
-  font-weight: 600; }
-</style> 
-
+</style>
   </head>
   <body>
     <div class="wrapper">
@@ -154,50 +134,103 @@
             
             <div class="row">
                <!-- Loader -->
-               <div id="loading" style="display:none; text-align:center;">
+               <!-- <div id="loading" style="display:none; text-align:center;">
                 <p>Loading data...</p>
-              </div>
-
-
-              <div class="col-md-12">
+              </div> -->
+              <div class="col-sm-12">
                 <div class="card">
                   <div class="card-header">
-                    <div class="card-title">FMBODS - DR. ANNIE VIP Services - List Data Case</div>
+                    <div class="card-title"><h6><strong> RMODS Order Form</strong></h6></div>
+                  </div>
+                   
+              </div>
+              </div>
+
+              <div class="col-sm-6 col-md-3">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="card-title"><h6>Submitted</h6></div>
                   </div>
                   <div class="card-body">
-                    <div class="table-responsive">
-                        <table id="multi-filter-select" class="display table table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Customer Number</th>
-                                    <th>Doctor Name</th>
-                                    <th>Email</th>
-                                    <th>Patient Name</th>
-                                    <th>DOB</th>
-                                    <th>Gender</th>
-                                    <th>Detail</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>Customer Number</th>
-                                    <th>Doctor Name</th>
-                                    <th>Email</th>
-                                    <th>Patient Name</th>
-                                    <th>DOB</th>
-                                    <th>Gender</th>
-                                    <th>Detail</th>
-                                </tr>
-                            </tfoot>
-                            <tbody></tbody>
-                        </table>
-                    </div>
+                    <div id="Submited-Case"></div>
+                    <!-- <div class="card p-3">
+                      <div class="d-flex align-items-center">
+                        <span class="stamp stamp-md bg-primary me-3" style="color: #fff;">
+                          AL
+                        </span>
+                        <div>
+                          
+                    
+                          <div class="mb-1">
+                            <b
+                              ><a href="#"><small>#12132</small>  </a></b
+                            ><div class=" float-end text-primary"><small>a minute</small></div>
+                          </div>
+                          
+                          <small class="text-muted">alwin | alwin@gmail.com</small>
+                        </div>
+                      </div>
+                    </div> -->
+                    
                 </div>
+              </div>
+              </div>
 
-                
-                         
-
+              <div class="col-sm-6 col-md-3">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="card-title"><h6>Work In progress</h6></div>
+                  </div>
+                  <div class="card-body">
+                   
+                    <div id="WorkInProgress-Case"></div>
+                     
                 </div>
+              </div>
+              </div>
+
+              <div class="col-sm-6 col-md-3">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="card-title"><h6>Completed</h6></div>
+                  </div>
+                  <div class="card-body">
+                    
+                    
+                    <div id="Completed-Case"></div>
+                    
+ 
+                    
+                </div>
+              </div>
+              </div>
+
+              <div class="col-sm-6 col-md-3">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="card-title"><h6>Abandoned</h6></div>
+                  </div>
+                  <div class="card-body">
+                    
+                    <div id="Abandoned-Case"></div>
+                    
+                    
+                </div>
+              </div>
+              </div>
+              
+              <div class="col-sm-6 col-md-3">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="card-title"><h6>Trash</h6></div>
+                  </div>
+                  <div class="card-body">
+                    
+                    <div id="Trash-Case"></div>
+                     
+                    
+                </div>
+              </div>
               </div>
 
                
@@ -210,24 +243,26 @@
  
       
     </div>
+
+     
+
     <!-- Modal Detail -->
-<div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
-  <div class="modal-dialog   modal-xl  ">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="customerNumber"> </h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body" id="modalBody">
-              <!-- Data akan dimasukkan lewat JavaScript -->
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+    <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
+      <div class="modal-dialog   modal-xl  ">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="customerNumber"> </h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body" id="modalBody">
+                  <!-- Data akan dimasukkan lewat JavaScript -->
+              </div>
+              <!-- <div class="modal-footer"> 
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+              </div> -->
           </div>
       </div>
-  </div>
-</div>
-
+    </div>
 
 
     <!--   Core JS Files   -->
@@ -238,13 +273,11 @@
     <!-- jQuery Scrollbar -->
     <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
     
-    <script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
-    <!-- Datatables -->
-    <script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+    <script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script> 
     
     <!-- Kaiadmin JS -->
     <script src="../assets/js/kaiadmin.min.js"></script> 
     
-    <script type="module" src="./script_get_list_data_case.js"></script> 
+    <script type="module" src="./script_get_list_data_case_drop.js"></script> 
   </body>
 </html>

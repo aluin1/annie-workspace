@@ -27,6 +27,7 @@ func ConfigRouter() *echo.Echo {
 	e.POST("/insertCase", HandleInsertCase)
 	e.POST("/getToken", HandleToken)
 	e.GET("/dataCase", HandleGetCase)
+	e.POST("/editCaseStatus", HandleEditCase)
 	e.GET("/ping", ping)
 	e.POST("/uploadFiles", UploadFiles)
 

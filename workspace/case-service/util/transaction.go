@@ -1,6 +1,7 @@
 package util
 
 import (
+	"case-service/constant"
 	"case-service/model"
 	"context"
 	"fmt"
@@ -135,6 +136,7 @@ func InsertDataRequestCase(reqBody InsertCaseRequest) (caseData *model.DataCase,
 	CaseData.AdenoidsRemoved = null.StringFrom(reqBody.AdenoidsRemoved)
 	CaseData.Comment = null.StringFrom(reqBody.Comment)
 
+	CaseData.StatusCase = null.StringFrom(constant.Submited)
 	//image upload insert DB
 	// directoryName := reqBody.CustomerNumber
 	// fileBase64LateralXrayImage := reqBody.LateralXrayImage
@@ -267,5 +269,27 @@ func InsertDataRequestCase(reqBody InsertCaseRequest) (caseData *model.DataCase,
 
 	trx.Commit()
 	return CaseData, err
+	// return err
+}
+
+// EditDataCase Insert DataQuery
+func EditDataCase(reqBody EditCaseRequest, CaseData model.DataCase) (caseData *model.DataCase, err error) {
+
+	trx := GetDBConnection().Begin()
+	ctxTimeout, cancel := SetContextTimeoutDatabase(ctx)
+	defer cancel()
+	trxWithContext := trx.WithContext(ctxTimeout)
+
+	CaseData.StatusCase = null.StringFrom(reqBody.StatusCase)
+	CaseData.Comment = null.StringFrom(reqBody.Comment)
+	err = trxWithContext.Save(&CaseData).Error
+	if err != nil {
+		trx.Rollback()
+		return &CaseData, err
+		// return err
+	}
+
+	trx.Commit()
+	return &CaseData, err
 	// return err
 }

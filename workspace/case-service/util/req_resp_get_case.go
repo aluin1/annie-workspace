@@ -32,6 +32,7 @@ type GetCaseData struct {
 	ConsultDate        string `json:"consult_date"`
 	MissingTeeth       string `json:"missing_teeth"`
 	AdenoidsRemoved    string `json:"adenoids_removed"`
+	StatusCase         string `json:"status_case"`
 	Comment            string `json:"comment"`
 
 	LateralXrayImage   string `json:"lateral_xray_image"`   //optional
