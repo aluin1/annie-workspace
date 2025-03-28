@@ -96,7 +96,7 @@ func SendEmail(dataCase *model.DataCase) error {
 	defer writer.Close() // Pastikan writer ditutup setelah digunakan
 
 	boundary := writer.Boundary()
-	subjectText := fmt.Sprintf("Ticket Number %s FMBODS - Bioprogressive Order Form %s", strconv.Itoa(int(dataCase.CaseID.Int64)), dataCase.PatientName.String)
+	subjectText := fmt.Sprintf("Ticket Number %s Annie VIP Order Form %s", strconv.Itoa(int(dataCase.CaseID.Int64)), dataCase.PatientName.String)
 	headers := fmt.Sprintf("From: %s\r\nTo: %s\r\nSubject: %s\r\nMIME-Version: 1.0\r\nContent-Type: multipart/mixed; boundary=%s\r\n\r\n", senderEmail, recipientEmail, subjectText, boundary)
 	emailBody.WriteString(headers)
 

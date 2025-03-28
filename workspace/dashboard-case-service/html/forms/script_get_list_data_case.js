@@ -1,4 +1,4 @@
-import CONFIG from './config_data.js';
+import CONFIG from './config_data_case.js';
 
 const URL_GET_CASE = CONFIG.URL_GET_CASE;
 const URL_GET_TOKEN = CONFIG.URL_GET_TOKEN;
@@ -141,7 +141,7 @@ document.addEventListener("click", function(event) {
         const dateCompleted = formatDate(caseData.time_create);
         let detailHtml = `
             <h6><b>Completed: <br>${dateCompleted}</b></h6>
-            <h6><b>Biogresive Order Form - RMODS: </b></h6>
+            <h6><b>Annie VIP Order Form: </b></h6>
             <table border='0' class='display table table-striped table-hover'>
                 <tr>
                     <td><strong>Customer Number:</strong></td><td> ${caseData.customer_number}</td>                    

@@ -1,4 +1,4 @@
-import CONFIG from './config.js';
+import CONFIG from './config_data_case.js';
 
 const { URL_INSERT_CASE, URL_GET_TOKEN, CLIENT_ID, CLIENT_SECRET } = CONFIG;
 

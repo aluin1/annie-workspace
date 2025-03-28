@@ -5,7 +5,8 @@
 //     URL_EDIT_STATUS_CASE: 'http://localhost:8081/editCaseStatus', 
 //     CLIENT_ID:'79d4270a98d241999fa7e54e015b51ab',
 //     CLIENT_SECRET:'22106803111c4cdda620875ed4779129' ,
-//     URL_UPLOAD_FILE:'http://localhost:8081/uploadFiles'
+//     URL_UPLOAD_FILE:'http://localhost:8081/uploadFiles',
+//     EMAIL_SUPPORT:'fmbods@bioprogressive.org'
 // };
 
 const CONFIG = {
@@ -15,6 +16,7 @@ const CONFIG = {
     URL_EDIT_STATUS_CASE: 'https://annievipbe.ismartdds.com/editCaseStatus', 
     CLIENT_ID:'79d4270a98d241999fa7e54e015b51ab',
     CLIENT_SECRET:'22106803111c4cdda620875ed4779129' ,
-    URL_UPLOAD_FILE:'https://annievipbe.ismartdds.com/uploadFiles'
+    URL_UPLOAD_FILE:'https://annievipbe.ismartdds.com/uploadFiles',
+    EMAIL_SUPPORT:'fmbods@bioprogressive.org'
 };
 export default CONFIG;

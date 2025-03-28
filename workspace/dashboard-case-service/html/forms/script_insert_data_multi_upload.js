@@ -1,8 +1,13 @@
-import CONFIG from './config_data.js';
+import CONFIG from './config_data_case.js';
 
-const { URL_INSERT_CASE, URL_GET_TOKEN, CLIENT_ID, CLIENT_SECRET, URL_UPLOAD_FILE } = CONFIG;
+const { URL_INSERT_CASE, URL_GET_TOKEN, CLIENT_ID, CLIENT_SECRET, URL_UPLOAD_FILE, EMAIL_SUPPORT } = CONFIG;
+
+
 
 document.addEventListener('DOMContentLoaded', function () {
+     
+document.getElementById("emailSupport").textContent = EMAIL_SUPPORT;
+
     const form = document.getElementById('formCase');
     if (!form) {
         console.error("Form Not Found on page.");
