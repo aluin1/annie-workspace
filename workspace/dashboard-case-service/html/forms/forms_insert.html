@@ -38,6 +38,20 @@
     <link rel="stylesheet" href="../assets/css/plugins.min.css" />
     <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
  
+<style>
+  /* .main-panel  {
+    --bs-gutter-x: 30px;
+    margin-top: 3em!important;
+} */
+ 
+.main-header {
+    background: transparent;
+    min-height: 60px;
+    width: calc(100% - 250px);
+    position: fixed;
+    z-index: 1001;
+}
+</style>
 
   </head>
   <body>
@@ -63,9 +77,9 @@
                 <i class="gg-menu-left"></i>
               </button>
             </div>
-            <button class="topbar-toggler more">
+            <!-- <button class="topbar-toggler more">
               <i class="gg-more-vertical-alt"></i>
-            </button>
+            </button> -->
           </div>
           <!-- End Logo Header -->
         </div>
@@ -114,6 +128,33 @@
 
       <div class="main-panel"> 
 
+        <div class="main-header">
+        <div class="main-header-logo">
+          <!-- Logo Header -->
+          <div class="logo-header" data-background-color="dark">
+            <a href="index.html" class="logo">
+              <!-- <img
+                src="assets/img/kaiadmin/logo_light.svg"
+                alt="navbar brand"
+                class="navbar-brand"
+                height="20"
+              /> -->
+            </a>
+            <div class="nav-toggle">
+              <button class="btn btn-toggle toggle-sidebar">
+                <i class="gg-menu-right"></i>
+              </button>
+              <button class="btn btn-toggle sidenav-toggler">
+                <i class="gg-menu-left"></i>
+              </button>
+            </div>
+            <!-- <button class="topbar-toggler more">
+              <i class="gg-more-vertical-alt"></i>
+            </button> -->
+          </div>
+          <!-- End Logo Header -->
+        </div></div>
+
         <div class="container" style=" margin-top: 0px !important;">
           <div class="page-inner">
             <!-- <div class="page-header">
@@ -138,12 +179,12 @@
                 </li>
               </ul>
             </div> -->
-            <div class="row">
+            <div class="row" style="margin-top: 3em !important;">
               <div class="col-md-12">
                 <div class="card">
                   <form id="formCase">
                   <div class="card-header">
-                    <div class="card-title">DR. ANNIE VIP Services - Insert Case</div>
+                    <div class="card-title"><h6><strong> DR. ANNIE VIP Services - Insert Case</strong></h6></div>
                   </div>
                   <div class="card-body">
                     <div class="row">
