@@ -19,7 +19,7 @@ const CONFIG = {
     CLIENT_SECRET:'22106803111c4cdda620875ed4779129' ,
     URL_UPLOAD_FILE:'https://annievipbe.ismartdds.com/uploadFiles',
     EMAIL_SUPPORT:'fmbods@bioprogressive.org',
-    URL_VALIDATION_TOKEN_GMAIL:'http://localhost:8081/validationTokenGmail'
+    URL_VALIDATION_TOKEN_GMAIL:'https://annievipbe.ismartdds.com/validationTokenGmail'
 };
 
 document.addEventListener("DOMContentLoaded", checkDataUser);
