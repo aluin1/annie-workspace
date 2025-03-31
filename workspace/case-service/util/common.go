@@ -4,8 +4,11 @@ import (
 	"bytes"
 	"case-service/model"
 	"case-service/rc"
+	"crypto/rsa"
 	"encoding/base64"
+	"encoding/json"
 	"fmt"
+	"math/big"
 	"mime"
 	"mime/multipart"
 	"os"
@@ -14,7 +17,10 @@ import (
 	"strconv"
 	"strings"
 
+	"net/http"
 	"net/smtp"
+
+	"github.com/golang-jwt/jwt/v4"
 
 	"github.com/rs/zerolog/log"
 )
@@ -80,7 +86,7 @@ func SendEmail(dataCase *model.DataCase) error {
 	// attachmentPath := filepath.Join(pathAttach, "image1.jpg")
 
 	// Baca file attachment
-	// fileData, err := ioutil.ReadFile(attachmentPath)
+	// fileData, err := ioReadFile(attachmentPath)
 	// if err != nil {
 	// 	log.Error().Err(err).Msg("Failed to read attachment")
 	// 	return err
@@ -380,4 +386,93 @@ func HtmlContent(dataCase *model.DataCase) string {
 
 `
 	return contentBody
+}
+
+func ValidationTokenAuth(jwtToken string) (GoogleJWTClaims, error) {
+
+	var googleJWTClaims GoogleJWTClaims
+	token, err := jwt.Parse(jwtToken, func(token *jwt.Token) (interface{}, error) {
+		kid, ok := token.Header["kid"].(string)
+		if !ok {
+			return googleJWTClaims, fmt.Errorf("JWT does not contain a valid 'kid' field")
+		}
+		jwk, err := GetPublicKey(kid)
+		if err != nil {
+			return googleJWTClaims, err
+		}
+		return ParseRSAPublicKey(jwk)
+	}, jwt.WithoutClaimsValidation()) // Tambahkan ini untuk menonaktifkan validasi bawaan
+
+	if err != nil {
+		log.Info().Msg(fmt.Sprintf("❌ JWT tidak valid: %v", err))
+		return googleJWTClaims, err
+	}
+
+	if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
+		log.Info().Msg("✅ JWT valid!")
+		payloadJson, _ := json.MarshalIndent(claims, "", "  ")
+		log.Info().Msg(fmt.Sprintf("✅ Payload: %s", string(payloadJson)))
+
+		if err := json.Unmarshal(payloadJson, &googleJWTClaims); err != nil {
+			log.Info().Msg(fmt.Sprintf("Error Unmarshal: %s", err.Error()))
+		}
+
+		log.Info().Msg(fmt.Sprintf("✅ Email: %v", googleJWTClaims.Email))
+		return googleJWTClaims, err
+	}
+
+	log.Info().Msg("❌ JWT tidak valid!")
+	return googleJWTClaims, err
+
+}
+
+// Convert base64 URL to big.Int
+func Base64ToBigInt(encoded string) (*big.Int, error) {
+	decoded, err := base64.RawURLEncoding.DecodeString(encoded)
+	if err != nil {
+		return nil, err
+	}
+	bi := new(big.Int).SetBytes(decoded)
+	return bi, nil
+}
+
+// Convert JSON Public Key to *rsa.PublicKey
+func ParseRSAPublicKey(jwk JWK) (*rsa.PublicKey, error) {
+	n, err := Base64ToBigInt(jwk.N)
+	if err != nil {
+		return nil, err
+	}
+	e, err := Base64ToBigInt(jwk.E)
+	if err != nil {
+		return nil, err
+	}
+
+	return &rsa.PublicKey{
+		N: n,
+		E: int(e.Int64()),
+	}, nil
+}
+
+// Fetch public key from Google JWKS endpoint
+func GetPublicKey(kid string) (JWK, error) {
+	urlGetPublicKey := os.Getenv("URL_GET_PUBLIC_KEY")
+	resp, err := http.Get(urlGetPublicKey)
+	if err != nil {
+		return JWK{}, fmt.Errorf("error fetching public keys: %w", err)
+	}
+	defer resp.Body.Close()
+
+	var jwks JWKS
+	if err := json.NewDecoder(resp.Body).Decode(&jwks); err != nil {
+		return JWK{}, fmt.Errorf("error decoding JWKS: %w", err)
+	}
+
+	for _, key := range jwks.Keys {
+		if key.Kid == kid {
+			log.Info().Msg(fmt.Sprintf("✅ Using Key ID: %s", key.Kid))
+			return key, nil
+		}
+	}
+
+	return JWK{}, fmt.Errorf("no matching key found for kid: %s", kid)
 }

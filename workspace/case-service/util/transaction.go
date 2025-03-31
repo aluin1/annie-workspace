@@ -137,128 +137,17 @@ func InsertDataRequestCase(reqBody InsertCaseRequest) (caseData *model.DataCase,
 	CaseData.Comment = null.StringFrom(reqBody.Comment)
 
 	CaseData.StatusCase = null.StringFrom(constant.Submited)
-	//image upload insert DB
-	// directoryName := reqBody.CustomerNumber
-	// fileBase64LateralXrayImage := reqBody.LateralXrayImage
-	// if !govalidator.IsNull(fileBase64LateralXrayImage) {
-	// 	namingXray := directoryName + constant.NamingLateralXrayImage
-	// 	pathLateralXrayImage, errUploadLateralXray := ConvertBase64(fileBase64LateralXrayImage, directoryName, namingXray)
-	// 	if errUploadLateralXray != nil {
-	// 		return CaseData, errUploadLateralXray
-	// 	}
-
 	CaseData.LateralXrayImage = null.StringFrom(reqBody.LateralXrayImage)
-	// }
-
-	// fileBase64FrontalXrayImage := reqBody.FrontalXrayImage
-	// if !govalidator.IsNull(fileBase64FrontalXrayImage) {
-	// 	namingFrontalXrayImage := directoryName + constant.NamingFrontalXrayImage
-	// 	pathFrontalXrayImage, errFrontalXrayImage := ConvertBase64(fileBase64FrontalXrayImage, directoryName, namingFrontalXrayImage)
-	// 	if errFrontalXrayImage != nil {
-	// 		return CaseData, errFrontalXrayImage
-	// 	}
-
 	CaseData.FrontalXrayImage = null.StringFrom(reqBody.FrontalXrayImage)
-	// }
-
-	// fileBase64LowerArchImage := reqBody.LowerArchImage
-	// if !govalidator.IsNull(fileBase64LowerArchImage) {
-	// 	namingLowerArchImage := directoryName + constant.NamingLowerArchImage
-	// 	pathLowerArchImage, errLowerArchImage := ConvertBase64(fileBase64LowerArchImage, directoryName, namingLowerArchImage)
-	// 	if errLowerArchImage != nil {
-	// 		return CaseData, errLowerArchImage
-	// 	}
-
 	CaseData.LowerArchImage = null.StringFrom(reqBody.LowerArchImage)
-	// }
-
-	// fileBase64UpperArchImage := reqBody.UpperArchImage
-	// if !govalidator.IsNull(fileBase64UpperArchImage) {
-	// 	namingUpperArchImage := directoryName + constant.NamingUpperArchImage
-	// 	pathUpperArchImage, errUpperArchImage := ConvertBase64(fileBase64UpperArchImage, directoryName, namingUpperArchImage)
-	// 	if errUpperArchImage != nil {
-	// 		return CaseData, errUpperArchImage
-	// 	}
-
 	CaseData.UpperArchImage = null.StringFrom(reqBody.UpperArchImage)
-	// }
-
-	// fileBase64HandwristXrayImage := reqBody.HandwristXrayImage
-	// if !govalidator.IsNull(fileBase64HandwristXrayImage) {
-	// 	namingHandwristXrayImage := directoryName + constant.NamingHandwristXrayImage
-	// 	pathHandwristXrayImage, errHandwristXrayImage := ConvertBase64(fileBase64HandwristXrayImage, directoryName, namingHandwristXrayImage)
-	// 	if errHandwristXrayImage != nil {
-	// 		return CaseData, errHandwristXrayImage
-	// 	}
-
 	CaseData.HandwristXrayImage = null.StringFrom(reqBody.HandwristXrayImage)
-	// }
-
-	// fileBase64PanoramicXrayImage := reqBody.PanoramicXrayImage
-	// if !govalidator.IsNull(fileBase64PanoramicXrayImage) {
-	// 	namingPanoramicXrayImage := directoryName + constant.NamingPanoramicXrayImage
-	// 	pathPanoramicXrayImage, errPanoramicXrayImage := ConvertBase64(fileBase64PanoramicXrayImage, directoryName, namingPanoramicXrayImage)
-	// 	if errPanoramicXrayImage != nil {
-	// 		return CaseData, errPanoramicXrayImage
-	// 	}
-
 	CaseData.PanoramicXrayImage = null.StringFrom(reqBody.PanoramicXrayImage)
-	// }
-
-	// fileBase64AdditionalRecord1 := reqBody.AdditionalRecord1
-	// if !govalidator.IsNull(fileBase64AdditionalRecord1) {
-	// 	namingAdditionalRecord1 := directoryName + constant.NamingAdditionalRecord1
-	// 	pathAdditionalRecord1, errAdditionalRecord1 := ConvertBase64(fileBase64AdditionalRecord1, directoryName, namingAdditionalRecord1)
-	// 	if errAdditionalRecord1 != nil {
-	// 		return CaseData, errAdditionalRecord1
-	// 	}
-
-	CaseData.AdditionalRecord_1 = null.StringFrom(reqBody.AdditionalRecord2)
-	// }
-
-	// fileBase64AdditionalRecord2 := reqBody.AdditionalRecord2
-	// if !govalidator.IsNull(fileBase64AdditionalRecord2) {
-	// 	namingAdditionalRecord2 := directoryName + constant.NamingAdditionalRecord2
-	// 	pathAdditionalRecord2, errAdditionalRecord2 := ConvertBase64(fileBase64AdditionalRecord2, directoryName, namingAdditionalRecord2)
-	// 	if errAdditionalRecord2 != nil {
-	// 		return CaseData, errAdditionalRecord2
-	// 	}
-
+	CaseData.AdditionalRecord_1 = null.StringFrom(reqBody.AdditionalRecord1)
 	CaseData.AdditionalRecord_2 = null.StringFrom(reqBody.AdditionalRecord2)
-	// }
-
-	// fileBase64AdditionalRecord3 := reqBody.AdditionalRecord3
-	// if !govalidator.IsNull(fileBase64AdditionalRecord3) {
-	// 	namingAdditionalRecord3 := directoryName + constant.NamingAdditionalRecord3
-	// 	pathAdditionalRecord3, errAdditionalRecord3 := ConvertBase64(fileBase64AdditionalRecord3, directoryName, namingAdditionalRecord3)
-	// 	if errAdditionalRecord3 != nil {
-	// 		return CaseData, errAdditionalRecord3
-	// 	}
-
 	CaseData.AdditionalRecord_3 = null.StringFrom(reqBody.AdditionalRecord3)
-	// }
-
-	// fileBase64AdditionalRecord4 := reqBody.AdditionalRecord4
-	// if !govalidator.IsNull(fileBase64AdditionalRecord4) {
-	// 	namingAdditionalRecord4 := directoryName + constant.NamingAdditionalRecord4
-	// 	pathAdditionalRecord4, errAdditionalRecord4 := ConvertBase64(fileBase64AdditionalRecord4, directoryName, namingAdditionalRecord4)
-	// 	if errAdditionalRecord4 != nil {
-	// 		return CaseData, errAdditionalRecord4
-	// 	}
-
 	CaseData.AdditionalRecord_4 = null.StringFrom(reqBody.AdditionalRecord4)
-	// }
-
-	// fileBase64AdditionalRecord5 := reqBody.AdditionalRecord5
-	// if !govalidator.IsNull(fileBase64AdditionalRecord5) {
-	// 	namingAdditionalRecord5 := directoryName + constant.NamingAdditionalRecord5
-	// 	pathAdditionalRecord5, errAdditionalRecord5 := ConvertBase64(fileBase64AdditionalRecord5, directoryName, namingAdditionalRecord5)
-	// 	if errAdditionalRecord5 != nil {
-	// 		return CaseData, errAdditionalRecord5
-	// 	}
-
 	CaseData.AdditionalRecord_5 = null.StringFrom(reqBody.AdditionalRecord5)
-	// }
 
 	err = trxWithContext.Save(&CaseData).Error
 	if err != nil {

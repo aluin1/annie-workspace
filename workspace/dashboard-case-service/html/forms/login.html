@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>DR. ANNIE VIP Services - View Case</title>
+    <title>DR. ANNIE VIP Services - View Data Case</title>
     <meta
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
       name="viewport"
@@ -40,38 +40,18 @@
 
     <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- DataTables -->
-<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-<style>
-
-.dataTables_wrapper .dataTables_paginate .paginate_button {
-    box-sizing: border-box;
-    display: inline-block;
-    min-width: 1.5em;
-    padding: 1px!important;
-    margin-left: 2px;
-    text-align: center;
-    text-decoration: none !important;
-    cursor: pointer;
-    color: transparent!important;
-    border: 1px solid transparent;
-    border-radius: 2px;
-}
-.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-    background-color:transparent!important;
-    color: transparent!important;
-    border: 1px solid #007bff !important;
-}
-.table thead th {
-  font-size: .95rem;
-  text-transform: capitalize!important;
-  letter-spacing: 1px;
-  padding: 12px 24px !important;
-  border-bottom-width: 1px;
-  font-weight: 600; }
   
+
+<style>
+  .card, .card-light {
+    border-radius: 10px;
+    background-color: #fff;
+    margin-bottom: 10px !important;
+    -webkit-box-shadow: 2px 6px 15px 0 rgba(69, 65, 78, .1);
+    -moz-box-shadow: 2px 6px 15px 0 rgba(69, 65, 78, .1);
+    box-shadow: 2px 6px 15px 0 rgba(69, 65, 78, .1);
+    border: 0;
+}
 .main-header {
     background: transparent;
     min-height: 60px;
@@ -79,12 +59,21 @@
     position: fixed;
     z-index: 1001;
 }
-</style> 
 
+.g_id_signin {
+    border-radius: 50px; /* Membuat tombol lebih membulat */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.g_id_signin:hover {
+    transform: scale(1.05);
+}
+</style>
   </head>
   <body>
     <div class="wrapper">
-     
+      
       <!-- Sidebar -->
       <div class="sidebar" data-background-color="dark">
         <div class="sidebar-logo">
@@ -135,12 +124,12 @@
                 </a>
                 <div class="collapse show" id="forms">
                   <ul class="nav nav-collapse">
-                    <li class="active">
+                    <li >
                       <a href="../forms/forms_insert.html">
                         <span class="sub-item">Input Case</span>
                       </a>
                     </li>                    
-                    <li>
+                    <li class="active">
                       <a href="../forms/data_case.html">
                         <span class="sub-item">Data Case</span>
                       </a>
@@ -157,6 +146,7 @@
 
       <div class="main-panel">
          
+
         <div class="main-header">
           <div class="main-header-logo">
             <!-- Logo Header -->
@@ -184,57 +174,50 @@
             <!-- End Logo Header -->
           </div></div>
 
-
         <div class="container" style=" margin-top: 0px !important;">
           <div class="page-inner">
             
             <div class="row" style="margin-top: 3em !important;">
-               <!-- Loader -->
-               <div id="loading" style="display:none; text-align:center;">
-                <p>Loading data...</p>
-              </div>
-
-
-              <div class="col-md-12">
+              
+              <div class="col-md-3 ms-auto me-auto">
                 <div class="card">
                   <div class="card-header">
-                    <div class="card-title">DR. ANNIE VIP Services - List Data Case</div>
+                    <div class="card-title"><h6>Please Login First</h6></div>
                   </div>
                   <div class="card-body">
-                    <div class="table-responsive">
-                        <table id="multi-filter-select" class="display table table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Customer Number</th>
-                                    <th>Doctor Name</th>
-                                    <th>Email</th>
-                                    <th>Patient Name</th>
-                                    <th>DOB</th>
-                                    <th>Gender</th>
-                                    <th>Detail</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>Customer Number</th>
-                                    <th>Doctor Name</th>
-                                    <th>Email</th>
-                                    <th>Patient Name</th>
-                                    <th>DOB</th>
-                                    <th>Gender</th>
-                                    <th>Detail</th>
-                                </tr>
-                            </tfoot>
-                            <tbody></tbody>
-                        </table>
-                    </div>
-                </div>
+                    
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 
-                
-                         
+    <div id="g_id_onload"
+         data-client_id="947128923414-l0r161srpbf06g4lv5b30uisl3js0tmf.apps.googleusercontent.com"
+         data-context="signin"
+         data-ux_mode="popup"
+         data-callback="handleCredentialResponse"
+         data-auto_prompt="false">
+    </div>
+    
+    <div class="g_id_signin"
+         data-type="standard"
+         data-shape="rectangular"
+         data-theme="outline"
+         data-text="signin_with"
+         data-size="large">
+    </div>
 
+    <!-- <div class="g_id_signin"
+     data-type="icon"  
+     data-shape="circle"  
+     data-theme="filled_blue"   
+     data-size="large">
+    </div>
+     -->
+                    
                 </div>
               </div>
+              </div>
+
+              
+ 
 
                
             </div>
@@ -246,25 +229,8 @@
  
       
     </div>
-    <!-- Modal Detail -->
-<div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
-  <div class="modal-dialog   modal-xl  ">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="customerNumber"> </h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body" id="modalBody">
-              <!-- Data akan dimasukkan lewat JavaScript -->
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-          </div>
-      </div>
-  </div>
-</div>
 
-
+      
 
     <!--   Core JS Files   -->
     <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
@@ -274,13 +240,15 @@
     <!-- jQuery Scrollbar -->
     <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
     
-    <script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
-    <!-- Datatables -->
-    <script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+    <script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script> 
     
     <!-- Kaiadmin JS -->
     <script src="../assets/js/kaiadmin.min.js"></script> 
-    
-    <script type="module" src="./script_get_list_data_case.js"></script> 
+     
+<script type="module">
+  import { handleCredentialResponse } from "./script_validation_auth.js";
+  window.handleCredentialResponse = handleCredentialResponse;
+</script>
+
   </body>
 </html>

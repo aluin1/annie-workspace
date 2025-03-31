@@ -30,6 +30,7 @@ func ConfigRouter() *echo.Echo {
 	e.POST("/editCaseStatus", HandleEditCase)
 	e.GET("/ping", ping)
 	e.POST("/uploadFiles", UploadFiles)
+	e.POST("/validationTokenGmail", HandleValidationTokenGmail)
 
 	return e
 }

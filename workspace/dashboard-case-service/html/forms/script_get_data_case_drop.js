@@ -5,28 +5,48 @@ const URL_GET_TOKEN = CONFIG.URL_GET_TOKEN;
 const URL_EDIT_STATUS_CASE = CONFIG.URL_EDIT_STATUS_CASE;
 const CLIENT_ID = CONFIG.CLIENT_ID;
 const CLIENT_SECRET = CONFIG.CLIENT_SECRET;
+const URL_VALIDATION_TOKEN_GMAIL =  CONFIG.URL_VALIDATION_TOKEN_GMAIL;
+ 
+window.addEventListener("pageshow", function (event) {
+    if (event.persisted) {
+        location.reload();
+    }
+});
 
-document.addEventListener('DOMContentLoaded', async function() {
-    console.log("🚀 DOM Loaded - Fetching data...");
-    fetchData();
+
+document.addEventListener('DOMContentLoaded', async function() {  
+    fetchData()
 });
 
 // ✅ **Fungsi Fetch Data dengan Logging**
-async function fetchData( pageSize, page) {
+async function fetchData() {
     try {
          
-        swal({ title: "Loading Get Data...", text: "Please wait...", icon: "info", buttons: false });
-        const token = await getToken(); // 🔑 Ambil token sebelum submit
-        console.log("✅ Token received successfully.");
+        swal({ title: "Loading Check Access...", text: "Please wait...", icon: "info", buttons: false });
+        const tokenGmail = localStorage.getItem("google_jwt_token");
+        // const tokenGmail =null;
+        //console.log("📥 Google JWT Token:", tokenGmail);
+        
+    
+            const validationToken = await ValidationToken(tokenGmail);
+            console.log("validation Token Gmail: "+validationToken);
 
-        console.log(`📡 Fetching case data from API: ${URL_GET_CASE}?page=${page}&page_size=${pageSize}`);
-        const response = await fetch(`${URL_GET_CASE}?page=${page}&page_size=${pageSize}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
-        });
+            if (validationToken){
+                
+             swal({ title: "Loading Get Data...", text: "Please wait...", icon: "info", buttons: false });
+                const token = await getToken(); // 🔑 Ambil token sebelum submit
+                console.log("✅ Token received successfully.");
+
+                // console.log(`📡 Fetching case data from API: ${URL_GET_CASE}?page=${page}&page_size=${pageSize}`);
+                // const response = await fetch(`${URL_GET_CASE}?page=${page}&page_size=${pageSize}`, {
+                    console.log(`📡 Fetching case data from API: ${URL_GET_CASE}?page=&page_size=`);
+                    const response = await fetch(`${URL_GET_CASE}?page=&page_size=`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
 
         const result = await response.json();
         if (!response.ok) throw new Error(result.response_message);
@@ -73,6 +93,9 @@ async function fetchData( pageSize, page) {
             
         swal.close();
         });
+            }
+          
+
 
     } catch (error) {
         swal.close();
@@ -249,21 +272,18 @@ document.addEventListener("click", function(event) {
                 
                 console.log("✅ Status updated successfully", result); 
                 
-        swal.close();
+                swal.close();
                 swal({
                     title: "Success",
                     text: "Update Data Case successfully!",
                     icon: "success",
                     button: "OK" // Tombol konfirmasi
-                }).then(() => {
-                    // window.location.href = "data_case.html"; // Redirect setelah klik OK
+                }).then(() => { 
                     
                 modal.hide();
                 fetchData(); // Refresh data after update
                 });
-
-                // modal.hide();
-                // fetchData(); // Refresh data after update
+ 
             } catch (error) {
                 console.error("❌ Error updating status:", error);
                 swal.close();
@@ -335,3 +355,76 @@ const statusColors = {
     "4": "bg-info"    ,  
     "5": "bg-warning"     
 };
+
+async function ValidationToken(tokenGmail) {
+   
+    if (tokenGmail == null ||tokenGmail =="" ){
+             
+        swal.close();
+        swal({
+            title: "Please Login First",
+            text: "You need to log in before continue Process.",
+            icon: "error" ,
+            button: "OK" 
+        }).then(() => {
+            window.location.href = "login.html"; // Redirect setelah klik OK
+        });
+        return false;
+        
+    }  else {
+
+    // Siapkan request untuk dikirim ke backend
+    const requestData = { token: tokenGmail };
+    console.log("📤 Request Validation Auth Token:", requestData);
+
+    try {
+        const response = await fetch(`${URL_VALIDATION_TOKEN_GMAIL}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(requestData),
+        });
+
+        const data = await response.json();
+        if (!response.ok) { 
+            
+            throw new Error(`${response.status} - ${response.statusText} \n ${data.response_message}`);
+        }
+
+
+        if (data && data.email) {
+            console.log("✅ Token Valid Account:", data.email);
+            localStorage.setItem("google_jwt_token", tokenGmail);
+            localStorage.setItem("email", data.email);
+            localStorage.setItem("name", data.name);
+            localStorage.setItem("picture", data.picture);
+
+            // await swal({
+            //     title: "Success",
+            //     text: `Welcome, ${data.name || "User"}!`,
+            //     icon: "success",
+            //     button: "OK"
+            // });
+
+            // window.location.href = "data_case.html"; // Redirect setelah klik OK
+            return true; // Token valid
+        } else {
+            console.error("resp validate token auth:", data.response_message);
+            throw new Error(data.response_message);
+        }
+    } catch (err) {
+        console.error("❌ Error validate token auth:", err);
+        // swal.close();
+
+        await swal({
+            title: "Credential Failed",
+            text: err.message,
+            icon: "error",
+            buttons: { confirm: { className: "btn btn-danger" } }
+        });
+
+        fetchData();
+        window.location.href = "login.html";
+        return false; // Token tidak valid
+    }
+}
+}

@@ -33,3 +33,14 @@ CREATE TABLE IF NOT EXISTS public.tb_case (
 
 ALTER TABLE IF EXISTS public.tb_case
     OWNER TO postgres;
+
+
+CREATE TABLE IF NOT EXISTS public.tb_user (
+    user_id BIGSERIAL PRIMARY KEY,
+    email VARCHAR(100),
+    active VARCHAR(1),
+    time_create TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+ALTER TABLE IF EXISTS public.tb_user
+    OWNER TO postgres;

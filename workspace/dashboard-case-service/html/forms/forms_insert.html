@@ -37,28 +37,22 @@
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../assets/css/plugins.min.css" />
     <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
- 
-<style>
-  /* .main-panel  {
-    --bs-gutter-x: 30px;
-    margin-top: 3em!important;
-} */
- 
-.main-header {
-    background: transparent;
-    min-height: 60px;
-    width: calc(100% - 250px);
-    position: fixed;
-    z-index: 1001;
-}
-</style>
+   
 
+    <style>
+      /* Disable interaction with the dropdown menu */
+.disabled-dropdown {
+    pointer-events: none;  /* Prevent any mouse events (click, hover) */
+    opacity: 0.5; /* Optional: Add a visual cue to indicate the dropdown is disabled */
+}
+    </style>
   </head>
   <body>
     <div class="wrapper">
       <!-- Sidebar -->
       <div class="sidebar" data-background-color="dark">
         <div class="sidebar-logo">
+        
           <!-- Logo Header -->
           <div class="logo-header" data-background-color="dark">
             <a href="../index.html" class="logo">
@@ -77,9 +71,9 @@
                 <i class="gg-menu-left"></i>
               </button>
             </div>
-            <!-- <button class="topbar-toggler more">
+            <button class="topbar-toggler more">
               <i class="gg-more-vertical-alt"></i>
-            </button> -->
+            </button>
           </div>
           <!-- End Logo Header -->
         </div>
@@ -128,64 +122,108 @@
 
       <div class="main-panel"> 
 
-        <div class="main-header">
-        <div class="main-header-logo">
-          <!-- Logo Header -->
-          <div class="logo-header" data-background-color="dark">
-            <a href="index.html" class="logo">
-              <!-- <img
-                src="assets/img/kaiadmin/logo_light.svg"
-                alt="navbar brand"
-                class="navbar-brand"
-                height="20"
-              /> -->
-            </a>
-            <div class="nav-toggle">
-              <button class="btn btn-toggle toggle-sidebar">
-                <i class="gg-menu-right"></i>
-              </button>
-              <button class="btn btn-toggle sidenav-toggler">
-                <i class="gg-menu-left"></i>
+        <div class="main-header"> <div class="main-header-logo">
+         
+            <!-- Logo Header -->
+            <div class="logo-header" data-background-color="dark">
+              <!-- <a href="index.html" class="logo">
+                <img
+                  src="assets/img/kaiadmin/logo_light.svg"
+                  alt="navbar brand"
+                  class="navbar-brand"
+                  height="20"
+                />
+              </a> -->
+              <div class="nav-toggle">
+                <button class="btn btn-toggle toggle-sidebar">
+                  <i class="gg-menu-right"></i>
+                </button>
+                <button class="btn btn-toggle sidenav-toggler">
+                  <i class="gg-menu-left"></i>
+                </button>
+              </div>
+              <button class="topbar-toggler more">
+                <i class="gg-more-vertical-alt"></i>
               </button>
             </div>
-            <!-- <button class="topbar-toggler more">
-              <i class="gg-more-vertical-alt"></i>
-            </button> -->
+            <!-- End Logo Header -->
           </div>
-          <!-- End Logo Header -->
-        </div></div>
+         <!-- Navbar Header -->
+         <nav
+         class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom"
+       >
+         <div class="container-fluid">
+          
 
-        <div class="container" style=" margin-top: 0px !important;">
-          <div class="page-inner">
-            <!-- <div class="page-header">
-              <h3 class="fw-bold mb-3">Forms</h3>
-              <ul class="breadcrumbs mb-3">
-                <li class="nav-home">
-                  <a href="#">
-                    <i class="icon-home"></i>
-                  </a>
-                </li>
-                <li class="separator">
-                  <i class="icon-arrow-right"></i>
-                </li>
-                <li class="nav-item">
-                  <a href="#">Forms</a>
-                </li>
-                <li class="separator">
-                  <i class="icon-arrow-right"></i>
-                </li>
-                <li class="nav-item">
-                  <a href="#">Basic Form</a>
-                </li>
-              </ul>
-            </div> -->
-            <div class="row" style="margin-top: 3em !important;">
+           <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
+              <li class="nav-item topbar-user dropdown hidden-caret">
+               <a
+                 class="dropdown-toggle profile-pic"
+                 data-bs-toggle="dropdown"
+                 href="#"
+                 aria-expanded="false"
+               >
+                 <div class="avatar-sm">
+                   <img
+                     src="/assets/img/blank.jpg"
+                     alt="..."
+                     class="avatar-img rounded-circle"
+                   />
+                 </div>
+                 <span class="profile-username">
+                   <span class="op-7"></span>
+                   <span class="fw-bold"></span>
+                 </span>
+               </a>
+
+                
+               <ul class="dropdown-menu dropdown-user animated fadeIn" id="user-dropdown">
+                 <div class="dropdown-user-scroll scrollbar-outer">
+                   <li>
+                     <div class="user-box">
+                       <div class="avatar-lg">
+                         <img
+                           src="/assets/img/blank.jpg"
+                           alt="image profile"
+                           class="avatar-img rounded"
+                         /> 
+                       </div>
+                       <div class="u-text">
+                         <h4></h4>
+                         <p class="text-muted"></p>
+                         <!-- <a
+                           href="profile.html"
+                           class="btn btn-xs btn-secondary btn-sm"
+                           >View Profile</a
+                         > -->
+                       </div>
+                     </div>
+                   </li>
+                   <!-- <li>
+                     <div class="dropdown-divider"></div>
+                     <a class="dropdown-item" href="#">Logout</a>
+                   </li> -->
+                 </div>
+               </ul>
+             </li>
+           </ul>
+         </div>
+       </nav>
+       
+       <!-- End Navbar -->
+     </div> 
+
+        <div class="container"  > 
+            <div class="page-inner">
+              <div class="page-header">
+                <p class="fw-bold mb-2" style="font-size: 1.2rem;"><b>DR. ANNIE VIP Services - Insert Case</b></p>
+                 
+              </div>
+            <div class="row"  >
               <div class="col-md-12">
                 <div class="card">
                   <form id="formCase">
-                  <div class="card-header">
-                    <div class="card-title"><h6><strong> DR. ANNIE VIP Services - Insert Case</strong></h6></div>
-                  </div>
+                 
                   <div class="card-body">
                     <div class="row">
                       <div class="col-md-6 col-lg-4">
@@ -637,30 +675,15 @@
 
     <!-- jQuery Scrollbar -->
     <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
-
-    <!-- Chart JS -->
-    <script src="../assets/js/plugin/chart.js/chart.min.js"></script>
-
+ 
     <!-- jQuery Sparkline -->
     <script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
 
     <!-- Chart Circle -->
     <script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
-
-    <!-- Datatables -->
-    <script src="../assets/js/plugin/datatables/datatables.min.js"></script>
-
-    <!-- Bootstrap Notify -->
-    <script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
-    
-
-    <!-- jQuery Vector Maps -->
-    <script src="../assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
-    <script src="../assets/js/plugin/jsvectormap/world.js"></script>
-
-    <!-- Google Maps Plugin -->
-    <script src="../assets/js/plugin/gmaps/gmaps.js"></script>
-
+ 
+ 
+      
     <!-- Sweet Alert -->
     <script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
     <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
