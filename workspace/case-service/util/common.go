@@ -331,17 +331,43 @@ func HtmlContent(dataCase *model.DataCase) string {
                             <td><b>	Frontal X-Ray Image:</b></td> 
                             </tr>
                             <tr style="font-size: 15px; "> 
-                            <td><span>` + dataCase.LateralXrayImage.String + `</span></td>
-                            <td><span>` + dataCase.FrontalXrayImage.String + `</span></td>
+                            <td><span>  
+							<img src=` + dataCase.LateralXrayImage.String + `  width='50%'>
+							<br><a href =` + dataCase.LateralXrayImage.String + `  target='_blank'>
+							<button style:"background-color: #7cd1f9;">View</button>  
+							</a>
+							</span></td>
+							
+							
+                            <td><span>  
+							<img src=` + dataCase.FrontalXrayImage.String + `  width='50%'>
+							<br><a href =` + dataCase.FrontalXrayImage.String + `  target='_blank'>
+							<button style:"background-color: #7cd1f9;">View</button>  
+							</a>
+							</span></td>
+
                             </tr>
                             
                             <tr style="font-size: 15px; "> 
                             <td><b>Lower Arch Image:</b></td>
                             <td><b>	Upper Arch Image:</b></td> 
                             </tr>
-                            <tr style="font-size: 15px; "> 
-                            <td><span>` + dataCase.LowerArchImage.String + `</span></td> 
-                            <td><span>` + dataCase.UpperArchImage.String + `</span></td>
+                            <tr style="font-size: 15px; "> 							
+							
+                            <td><span>  
+							<img src=` + dataCase.LowerArchImage.String + `  width='50%'>
+							<br><a href =` + dataCase.LowerArchImage.String + `  target='_blank'>
+							<button style:"background-color: #7cd1f9;">View</button>  
+							</a>
+							</span></td>							
+							
+                            <td><span>  
+							<img src=` + dataCase.UpperArchImage.String + `  width='50%'>
+							<br><a href =` + dataCase.UpperArchImage.String + `  target='_blank'>
+							<button style:"background-color: #7cd1f9;">View</button>  
+							</a>
+							</span></td>
+
                             </tr>
 
                             <tr style="font-size: 15px; "> 
@@ -349,8 +375,21 @@ func HtmlContent(dataCase *model.DataCase) string {
                             <td><b>Panoramic X-Ray (Panorex) Image:</b></td> 
                             </tr>
                             <tr style="font-size: 15px; "> 
-                            <td><span>` + dataCase.HandwristXrayImage.String + `</span></td> 
-                            <td><span>` + dataCase.PanoramicXrayImage.String + `</span></td>
+							
+							<td><span>  
+							<img src=` + dataCase.HandwristXrayImage.String + `  width='50%'>
+							<br><a href =` + dataCase.HandwristXrayImage.String + `  target='_blank'>
+							<button style:"background-color: #7cd1f9;">View</button>  
+							</a>
+							</span></td>							
+							
+                            <td><span>  
+							<img src=` + dataCase.PanoramicXrayImage.String + `  width='50%'>
+							<br><a href =` + dataCase.PanoramicXrayImage.String + `  target='_blank'>
+							<button style:"background-color: #7cd1f9;">View</button>  
+							</a>
+							</span></td>
+							
                             </tr>
                          
                             <tr style="font-size: 15px; "> 
@@ -358,17 +397,43 @@ func HtmlContent(dataCase *model.DataCase) string {
                               <td><b>Additional Record 2:</b></td> 
                               </tr>
                               <tr style="font-size: 15px; "> 
-                              <td><span>` + dataCase.AdditionalRecord_1.String + `</span></td> 
-                              <td><span>` + dataCase.AdditionalRecord_2.String + `</span></td>
+							
+							<td><span>  
+							<img src=` + dataCase.AdditionalRecord_1.String + `  width='50%'>
+							<br><a href =` + dataCase.AdditionalRecord_1.String + `  target='_blank'>
+							<button style:"background-color: #7cd1f9;">View</button>  
+							</a>
+							</span></td>							
+							
+                            <td><span>  
+							<img src=` + dataCase.AdditionalRecord_2.String + `  width='50%'>
+							<br><a href =` + dataCase.AdditionalRecord_2.String + `  target='_blank'>
+							<button style:"background-color: #7cd1f9;">View</button>  
+							</a>
+							</span></td>
+							 
                               </tr>
                          
                               <tr style="font-size: 15px; "> 
                                 <td><b>Additional Record 3:</b></td>
                                 <td><b>Additional Record 4:</b></td> 
                                 </tr>
-                                <tr style="font-size: 15px; "> 
-                                <td><span>` + dataCase.AdditionalRecord_3.String + `</span></td> 
-                                <td><span>` + dataCase.AdditionalRecord_4.String + `</span></td>
+                                <tr style="font-size: 15px; ">  
+							
+								<td><span>  
+								<img src=` + dataCase.AdditionalRecord_3.String + `  width='50%'>
+								<br><a href =` + dataCase.AdditionalRecord_3.String + `  target='_blank'>
+								<button style:"background-color: #7cd1f9;">View</button>  
+								</a>
+								</span></td>							
+								
+								<td><span>  
+								<img src=` + dataCase.AdditionalRecord_4.String + `  width='50%'>
+								<br><a href =` + dataCase.AdditionalRecord_4.String + `  target='_blank'>
+								<button style:"background-color: #7cd1f9;">View</button>  
+								</a>
+								</span></td>
+							 
                                 </tr>
                         
                                 <tr style="font-size: 15px; "> 
@@ -376,7 +441,14 @@ func HtmlContent(dataCase *model.DataCase) string {
                                   <td><b> </b></td> 
                                   </tr>
                                   <tr style="font-size: 15px; "> 
-                                  <td><span>` + dataCase.AdditionalRecord_5.String + `</span></td> 
+							
+									<td><span>  
+									<img src=` + dataCase.AdditionalRecord_5.String + `  width='50%'>
+									<br><a href =` + dataCase.AdditionalRecord_5.String + `  target='_blank'>
+									<button style:"background-color: #7cd1f9;">View</button>  
+									</a>
+									</span></td>	
+
                                   <td><span> </span></td>
                                   </tr>
                               </table>

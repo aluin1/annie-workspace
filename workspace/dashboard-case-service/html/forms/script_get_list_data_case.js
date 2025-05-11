@@ -1,11 +1,8 @@
 import CONFIG from './config_data_case.js';
+import { GetTokenGeneral } from './config_data_case.js';
 
-const URL_GET_CASE = CONFIG.URL_GET_CASE;
-const URL_GET_TOKEN = CONFIG.URL_GET_TOKEN;
-const CLIENT_ID = CONFIG.CLIENT_ID;
-const CLIENT_SECRET = CONFIG.CLIENT_SECRET;
-
-console.log("🔗 URL_GET_TOKEN:", URL_GET_TOKEN);
+const URL_GET_CASE = CONFIG.URL_GET_CASE;  
+ 
 console.log("🔗 URL_GET_CASE:", URL_GET_CASE);
 
 document.addEventListener('DOMContentLoaded', async function() {
@@ -20,30 +17,9 @@ async function fetchData(pageSize ,page ) {
     try {
         loadingIndicator.style.display = "block"; // Tampilkan loading
         console.log(`🔄 Fetching data with pageSize: ${pageSize}, page: ${page}`);
+ 
 
-        // 1️⃣ **Get Token**
-        const formData = new URLSearchParams();
-        formData.append("grant_type", "client_credentials");
-        formData.append("client_id", CLIENT_ID);
-        formData.append("client_secret", CLIENT_SECRET);
-        formData.append("scope", "case");
-
-        console.log("📡 Requesting Token...");
-        const tokenResponse = await fetch(URL_GET_TOKEN, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: formData
-        });
-
-        const tokenData = await tokenResponse.json();
-        console.log("🔑 Token Response:", tokenData);
-
-        if (!tokenResponse.ok) throw new Error(`Get token failed: ${tokenData.response_message}`);
-
-        const token = tokenData.access_token;
-        if (!token) throw new Error("Access token is missing.");
-
-        console.log("✅ Access token obtained successfully");
+          const token = await GetTokenGeneral();
 
         // 2️⃣ **Get Data with Token**
         const urlWithParams = `${URL_GET_CASE}?page=${page}&page_size=${pageSize}`;

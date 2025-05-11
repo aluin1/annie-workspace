@@ -1,10 +1,8 @@
 import CONFIG from './config_data_case.js';
+import { GetTokenGeneral } from './config_data_case.js';
 
-const URL_GET_CASE = CONFIG.URL_GET_CASE;
-const URL_GET_TOKEN = CONFIG.URL_GET_TOKEN;
+const URL_GET_CASE = CONFIG.URL_GET_CASE; 
 const URL_EDIT_STATUS_CASE = CONFIG.URL_EDIT_STATUS_CASE;
-const CLIENT_ID = CONFIG.CLIENT_ID;
-const CLIENT_SECRET = CONFIG.CLIENT_SECRET;
 const URL_VALIDATION_TOKEN_GMAIL =  CONFIG.URL_VALIDATION_TOKEN_GMAIL;
  
 window.addEventListener("pageshow", function (event) {
@@ -34,7 +32,7 @@ async function fetchData() {
             if (validationToken){
                 
              swal({ title: "Loading Get Data...", text: "Please wait...", icon: "info", buttons: false });
-                const token = await getToken(); // 🔑 Ambil token sebelum submit
+                const token = await GetTokenGeneral(); // 🔑 Ambil token sebelum submit
                 console.log("✅ Token received successfully.");
 
                 // console.log(`📡 Fetching case data from API: ${URL_GET_CASE}?page=${page}&page_size=${pageSize}`);
@@ -175,28 +173,29 @@ document.addEventListener("click", function(event) {
                      <td><strong>Lateral X-ray Date</strong></td><td> ${formatDateOnly(caseData.lateral_xray_date)}</td>
                     </tr> 
                
+                    
                     <tr>
-                    <td><strong>Lateral X-Ray Image:</strong></td><td> ${caseData.lateral_xray_image}</td> 
-                    <td><strong>Frontal X-Ray Image:</strong></td><td> ${caseData.frontal_xray_image}</td>
+                    <td><strong>Lateral X-Ray Image:</strong></td><td><img src='${caseData.lateral_xray_image}' width='100%'><br><a href ='${caseData.lateral_xray_image}' target='_blank'><button class='btn btn-info mt-3'>View</button> </td> 
+                    <td><strong>Frontal X-Ray Image:</strong></td><td><img src='${caseData.frontal_xray_image}' width='100%'><br><a href ='${caseData.frontal_xray_image}' target='_blank'><button class='btn btn-info mt-3'>View</button> </td> 
                     </tr> 
                     <tr>
-                    <td><strong>Lower Arch Image:</strong></td><td> ${caseData.lower_arch_image}</td>
-					<td><strong>Upper Arch Image:</strong></td><td> ${caseData.upper_arch_image}</td>
+                    <td><strong>Lower Arch Image:</strong></td><td><img src='${caseData.lower_arch_image}' width='100%'><br><a href ='${caseData.lower_arch_image}' target='_blank'><button class='btn btn-info mt-3'>View</button> </td> 
+					<td><strong>Upper Arch Image:</strong></td><td><img src='${caseData.upper_arch_image}' width='100%'><br><a href ='${caseData.upper_arch_image}' target='_blank'><button class='btn btn-info mt-3'>View</button> </td> 
                     </tr> 
                     <tr>
-                    <td><strong>HandWrist X-Ray Image:</strong></td><td> ${caseData.handwrist_xray_image}</td>
-					<td><strong>Panoramic X-Ray (Panorex) Image:</strong></td><td> ${caseData.panoramic_xray_image}</td>
+                    <td><strong>HandWrist X-Ray Image:</strong></td><td><img src='${caseData.handwrist_xray_image}' width='100%'><br><a href ='${caseData.handwrist_xray_image}' target='_blank'><button class='btn btn-info mt-3'>View</button> </td> 
+					<td><strong>Panoramic X-Ray (Panorex) Image:</strong></td><td><img src='${caseData.panoramic_xray_image}' width='100%'><br><a href ='${caseData.panoramic_xray_image}' target='_blank'><button class='btn btn-info mt-3'>View</button> </td> 
                     </tr> 
                     <tr>
-                    <td><strong>Additional Record 1:</strong></td><td> ${caseData.additional_record_1}</td>
-					<td><strong>Additional Record 2:</strong></td><td> ${caseData.additional_record_2}</td>
+                    <td><strong>Additional Record 1:</strong></td><td><img src='${caseData.additional_record_1}' width='100%'><br><a href ='${caseData.additional_record_1}' target='_blank'><button class='btn btn-info mt-3'>View</button> </td> 
+					<td><strong>Additional Record 2:</strong></td><td><img src='${caseData.additional_record_2}' width='100%'><br><a href ='${caseData.additional_record_2}' target='_blank'><button class='btn btn-info mt-3'>View</button> </td> 
                     </tr> 
                     <tr>
-                    <td><strong>Additional Record 3:</strong></td><td> ${caseData.additional_record_3}</td>
-					<td><strong>Additional Record 4:</strong></td><td> ${caseData.additional_record_4}</td>
+                    <td><strong>Additional Record 3:</strong></td><td><img src='${caseData.additional_record_3}' width='100%'><br><a href ='${caseData.additional_record_3}' target='_blank'><button class='btn btn-info mt-3'>View</button> </td> 
+					<td><strong>Additional Record 4:</strong></td><td><img src='${caseData.additional_record_4}' width='100%'><br><a href ='${caseData.additional_record_4}' target='_blank'><button class='btn btn-info mt-3'>View</button> </td> 
                     </tr> 
                     <tr>
-                    <td><strong>Additional Record 5:</strong></td><td> ${caseData.additional_record_5}</td>
+                    <td><strong>Additional Record 5:</strong></td><td><img src='${caseData.additional_record_5}' width='100%'><br><a href ='${caseData.additional_record_5}' target='_blank'><button class='btn btn-info mt-3'>View</button> </td> 
 					   <td></td><td></td>
                     </tr> 
                 <tr>
@@ -245,7 +244,7 @@ document.addEventListener("click", function(event) {
                 return;
             }
 
-            const token = await getToken(); // 🔑 Ambil token sebelum submit
+            const token = await GetTokenGeneral(); // 🔑 Ambil token sebelum submit
             const requestBody = {
                 customer_number: caseData.customer_number,
                 case_id: String(caseData.case_id),
@@ -318,36 +317,7 @@ function formatDate(dateString) {
         hour12: true,
     });
 }
-
-async function getToken() {
-    try {
-        console.log("🔍 Fetching Token...");
-
-        const response = await fetch(URL_GET_TOKEN, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: new URLSearchParams({
-                grant_type: "client_credentials",
-                client_id: CLIENT_ID,
-                client_secret: CLIENT_SECRET,
-                scope: "case"
-            })
-        });
-
-        const data = await response.json();
-        console.log("🔑 Get Token Response:", data);
-
-        if (!response.ok || !data.access_token) {
-            throw new Error(`Token Error:\n ${data.response_message || "Unknown error"}`);
-        }
-
-        return data.access_token;
-    } catch (error) {
-        console.error("❌ Error fetching token:", error); 
-        swal({ title: "Error", text: error.message, icon: "error" });
-    }
-}
-
+ 
 const statusColors = {
     "1": "bg-primary",    
     "2": "bg-secondary",  

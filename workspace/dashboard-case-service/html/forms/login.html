@@ -1,254 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>DR. ANNIE VIP Services - View Data Case</title>
-    <meta
-      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
-      name="viewport"
-    />
-    <!-- <link
-      rel="icon"
-      href="../assets/img/kaiadmin/favicon.ico"
-      type="image/x-icon"
-    /> -->
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DR. ANNIE VIP Services - View Data Case</title>
 
-    <!-- Fonts and icons -->
-    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
-    <script>
-      WebFont.load({
-        google: { families: ["Public Sans:300,400,500,600,700"] },
-        custom: {
-          families: [
-            "Font Awesome 5 Solid",
-            "Font Awesome 5 Regular",
-            "Font Awesome 5 Brands",
-            "simple-line-icons",
-          ],
-          urls: ["../assets/css/fonts.min.css"],
-        },
-        active: function () {
-          sessionStorage.fonts = true;
-        },
-      });
-    </script>
+  <!-- Fonts and Icons -->
+  <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+  <script>
+    WebFont.load({
+      google: { families: ["Public Sans:300,400,500,600,700"] },
+      custom: {
+        families: [
+          "Font Awesome 5 Solid",
+          "Font Awesome 5 Regular",
+          "Font Awesome 5 Brands",
+          "simple-line-icons",
+        ],
+        urls: ["../assets/css/fonts.min.css"],
+      },
+      active: () => (sessionStorage.fonts = true),
+    });
+  </script>
 
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../assets/css/plugins.min.css" />
-    <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
+  <!-- Styles -->
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../assets/css/plugins.min.css" />
+  <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
 
-    <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<style>
-  .card, .card-light {
-    border-radius: 10px;
-    background-color: #fff;
-    margin-bottom: 10px !important;
-    -webkit-box-shadow: 2px 6px 15px 0 rgba(69, 65, 78, .1);
-    -moz-box-shadow: 2px 6px 15px 0 rgba(69, 65, 78, .1);
-    box-shadow: 2px 6px 15px 0 rgba(69, 65, 78, .1);
-    border: 0;
-}
-.main-header {
-    background: transparent;
-    min-height: 60px;
-    width: calc(100% - 250px);
-    position: fixed;
-    z-index: 1001;
-}
+  <style>
+    .card,
+    .card-light {
+      border-radius: 10px;
+      background-color: #fff;
+      margin-bottom: 10px !important;
+      box-shadow: 2px 6px 15px rgba(69, 65, 78, 0.1);
+      border: 0;
+    }
+    .main-header {
+      background: transparent;
+      min-height: 60px;
+      width: calc(100% - 250px);
+      position: fixed;
+      z-index: 1001;
+    }
+    .g_id_signin {
+      border-radius: 50px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease-in-out;
+    }
+    .g_id_signin:hover {
+      transform: scale(1.05);
+    }
+    .swal-title {
+      font-size: 18px !important;
+    }
+  </style>
+</head>
 
-.g_id_signin {
-    border-radius: 50px; /* Membuat tombol lebih membulat */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out;
-}
-
-.g_id_signin:hover {
-    transform: scale(1.05);
-}
-</style>
-  </head>
-  <body>
-    <div class="wrapper">
-      
-      <!-- Sidebar -->
-      <div class="sidebar" data-background-color="dark">
-        <div class="sidebar-logo">
-          <!-- Logo Header -->
-          <div class="logo-header" data-background-color="dark">
-            <a href="../index.html" class="logo">
-              <!-- <img
-                src="../assets/img/kaiadmin/logo_light.svg"
-                alt="navbar brand"
-                class="navbar-brand"
-                height="20"
-              /> -->
-            </a>
-            <div class="nav-toggle">
-              <button class="btn btn-toggle toggle-sidebar">
-                <i class="gg-menu-right"></i>
-              </button>
-              <button class="btn btn-toggle sidenav-toggler">
-                <i class="gg-menu-left"></i>
-              </button>
-            </div>
-            <!-- <button class="topbar-toggler more">
-              <i class="gg-more-vertical-alt"></i>
-            </button> -->
+<body>
+  <div class="wrapper">
+    <!-- Sidebar -->
+    <div class="sidebar" data-background-color="dark">
+      <div class="sidebar-logo">
+        <div class="logo-header" data-background-color="dark">
+          <a href="../index.html" class="logo"></a>
+          <div class="nav-toggle">
+            <button class="btn btn-toggle toggle-sidebar"><i class="gg-menu-right"></i></button>
+            <button class="btn btn-toggle sidenav-toggler"><i class="gg-menu-left"></i></button>
           </div>
-          <!-- End Logo Header -->
         </div>
-        <div class="sidebar-wrapper scrollbar scrollbar-inner">
-          <div class="sidebar-content">
-            <ul class="nav nav-secondary">
-              <!-- <li class="nav-item  ">
-                <a href="../index.html">
-                  <i class="fas fa-home"></i>
-                  <p>Dashboard</p> 
-                </a> 
-              </li> -->
-              <li class="nav-section">
-                <span class="sidebar-mini-icon">
-                  <i class="fa fa-ellipsis-h"></i>
-                </span>
-                <h4 class="text-section">Data</h4>
-              </li> 
+      </div>
+      <div class="sidebar-wrapper scrollbar scrollbar-inner">
+        <div class="sidebar-content">
+          <ul class="nav nav-secondary">
+            <li class="nav-section">
+              <span class="sidebar-mini-icon"><i class="fa fa-ellipsis-h"></i></span>
+              <h4 class="text-section">Data</h4>
+            </li>
             <li class="nav-item active submenu">
-                <a data-bs-toggle="collapse" href="#forms">
-                  <i class="fas fa-pen-square"></i>
-                  <p>Case</p>
-                  <span class="caret"></span>
-                </a>
-                <div class="collapse show" id="forms">
-                  <ul class="nav nav-collapse">
-                    <li >
-                      <a href="../forms/forms_insert.html">
-                        <span class="sub-item">Input Case</span>
-                      </a>
-                    </li>                    
-                    <li class="active">
-                      <a href="../forms/data_case.html">
-                        <span class="sub-item">Data Case</span>
-                      </a>
-                    </li>
-
-                  </ul>
-                </div>
-              </li> 
-            </ul>
-          </div>
-        </div>
-      </div>
-      <!-- End Sidebar -->
-
-      <div class="main-panel">
-         
-
-        <div class="main-header">
-          <div class="main-header-logo">
-            <!-- Logo Header -->
-            <div class="logo-header" data-background-color="dark">
-              <a href="index.html" class="logo">
-                <!-- <img
-                  src="assets/img/kaiadmin/logo_light.svg"
-                  alt="navbar brand"
-                  class="navbar-brand"
-                  height="20"
-                /> -->
+              <a data-bs-toggle="collapse" href="#forms">
+                <i class="fas fa-pen-square"></i>
+                <p>Case</p>
+                <span class="caret"></span>
               </a>
-              <div class="nav-toggle">
-                <button class="btn btn-toggle toggle-sidebar">
-                  <i class="gg-menu-right"></i>
-                </button>
-                <button class="btn btn-toggle sidenav-toggler">
-                  <i class="gg-menu-left"></i>
-                </button>
+              <div class="collapse show" id="forms">
+                <ul class="nav nav-collapse">
+                  <li><a href="../forms/forms_insert.html"><span class="sub-item">Input Case</span></a></li>
+                  <li class="active"><a href="../forms/data_case.html"><span class="sub-item">Data Case</span></a></li>
+                </ul>
               </div>
-              <!-- <button class="topbar-toggler more">
-                <i class="gg-more-vertical-alt"></i>
-              </button> -->
-            </div>
-            <!-- End Logo Header -->
-          </div></div>
-
-        <div class="container" style=" margin-top: 0px !important;">
-          <div class="page-inner">
-            
-            <div class="row" style="margin-top: 3em !important;">
-              
-              <div class="col-md-3 ms-auto me-auto">
-                <div class="card">
-                  <div class="card-header">
-                    <div class="card-title"><h6>Please Login First</h6></div>
-                  </div>
-                  <div class="card-body">
-                    <center>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-
-    <div id="g_id_onload"
-         data-client_id="947128923414-l0r161srpbf06g4lv5b30uisl3js0tmf.apps.googleusercontent.com"
-         data-context="signin"
-         data-ux_mode="popup"
-         data-callback="handleCredentialResponse"
-         data-auto_prompt="false">
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-    
-    <div class="g_id_signin"
-         data-type="standard"
-         data-shape="rectangular"
-         data-theme="outline"
-         data-text="signin_with"
-         data-size="large">
-    </div>
-  </center>
-    <!-- <div class="g_id_signin"
-     data-type="icon"  
-     data-shape="circle"  
-     data-theme="filled_blue"   
-     data-size="large">
-    </div>
-     -->
-                    
-                </div>
-              </div>
-              </div>
+    <!-- End Sidebar -->
 
-              
- 
-
-               
+    <div class="main-panel">
+      <div class="main-header">
+        <div class="main-header-logo">
+          <div class="logo-header" data-background-color="dark">
+            <a href="index.html" class="logo"></a>
+            <div class="nav-toggle">
+              <button class="btn btn-toggle toggle-sidebar"><i class="gg-menu-right"></i></button>
+              <button class="btn btn-toggle sidenav-toggler"><i class="gg-menu-left"></i></button>
             </div>
           </div>
         </div>
-
-         
       </div>
- 
-      
-    </div>
 
-      
+      <div class="container" style="margin-top: 3em !important;">
+        <div class="page-inner">
+          <div class="row">
+            <div class="col-md-3 ms-auto me-auto">
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title"><h6>Please Login First</h6></div>
+                </div>
+                <div class="card-body text-center">
+                  <!-- Google Sign-In -->
+                  <div id="g_id_onload"
+                    data-client_id="947128923414-l0r161srpbf06g4lv5b30uisl3js0tmf.apps.googleusercontent.com"
+                    data-context="signin"
+                    data-ux_mode="popup"
+                    data-callback="handleCredentialResponse"
+                    data-auto_prompt="false">
+                  </div>
 
-    <!--   Core JS Files   -->
-    <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
-    <script src="../assets/js/core/popper.min.js"></script>
-    <script src="../assets/js/core/bootstrap.min.js"></script>
+                  <div class="g_id_signin"
+                    data-type="standard"
+                    data-shape="rectangular"
+                    data-theme="outline"
+                    data-text="signin_with"
+                    data-size="large">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- container -->
+    </div><!-- main-panel -->
+  </div><!-- wrapper -->
 
-    <!-- jQuery Scrollbar -->
-    <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
-    
-    <script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script> 
-    
-    <!-- Kaiadmin JS -->
-    <script src="../assets/js/kaiadmin.min.js"></script> 
-     
-<script type="module">
-  import { handleCredentialResponse } from "./script_validation_auth.js";
-  window.handleCredentialResponse = handleCredentialResponse;
-</script>
+  <!-- Core JS Files -->
+  <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
 
-  </body>
+  <!-- Plugin JS -->
+  <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+  <script src="../assets/js/kaiadmin.min.js"></script>
+
+  <!-- Google Identity -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+  <!-- Your Auth Script (ES Module) -->
+  <script type="module">
+    import { handleCredentialResponse } from "./script_validation_auth.js";
+    window.handleCredentialResponse = handleCredentialResponse;
+  </script>
+</body>
 </html>

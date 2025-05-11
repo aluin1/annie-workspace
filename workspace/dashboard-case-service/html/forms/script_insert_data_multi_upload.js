@@ -1,6 +1,7 @@
 import CONFIG from './config_data_case.js';
+import { GetTokenGeneral } from './config_data_case.js';
 
-const { URL_INSERT_CASE, URL_GET_TOKEN, CLIENT_ID, CLIENT_SECRET, URL_UPLOAD_FILE, EMAIL_SUPPORT } = CONFIG;
+const { URL_INSERT_CASE, URL_UPLOAD_FILE, EMAIL_SUPPORT } = CONFIG;
 
 
 
@@ -16,7 +17,7 @@ document.getElementById("emailSupport").textContent = EMAIL_SUPPORT;
 
     form.addEventListener('submit', async function (event) {
     event.preventDefault();
-     const token = await getToken(); // 🔑 Ambil token sebelum submit
+     const token = await GetTokenGeneral(); // 🔑 Ambil token sebelum submit
      let customer_number= getValue('customer_number');
 
         const fileFields = ['lateral_xray_image', 'frontal_xray_image','lower_arch_image',
@@ -65,26 +66,7 @@ document.getElementById("emailSupport").textContent = EMAIL_SUPPORT;
             uploadedPaths.forEach(({ field, path }) => {
                 filePaths[field] = path;
             });
-
-            // // ✅ Pastikan mendapatkan token sebelum lanjut
-            // console.log("🔍 Fetching Token...");
-            // const tokenResponse = await fetch(URL_GET_TOKEN, {
-            //     method: 'POST',
-            //     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            //     body: new URLSearchParams({
-            //         grant_type: "client_credentials",
-            //         client_id: CLIENT_ID,
-            //         client_secret: CLIENT_SECRET,
-            //         scope: "case"
-            //     })
-            // });
-
-            // const tokenData = await tokenResponse.json();
-            // console.log("🔑 Token Response:", tokenData);
-            // if (!tokenResponse.ok || !tokenData.access_token) {
-            //     throw new Error(`Token Error: \n${tokenData.response_message || "Unknown error"}`);
-            // }
-
+ 
             // ✅ Debug data sebelum dikirim
             const requestData = {
                 customer_number: customer_number,
@@ -255,32 +237,4 @@ function getValue(id) {
 function getCheckedValue(name) {
     return document.querySelector(`input[name="${name}"]:checked`)?.value || '';
 }
-
-async function getToken() {
-    try {
-        console.log("🔍 Fetching Token...");
-
-        const response = await fetch(URL_GET_TOKEN, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: new URLSearchParams({
-                grant_type: "client_credentials",
-                client_id: CLIENT_ID,
-                client_secret: CLIENT_SECRET,
-                scope: "case"
-            })
-        });
-
-        const data = await response.json();
-        console.log("🔑 Get Token Response:", data);
-
-        if (!response.ok || !data.access_token) {
-            throw new Error(`Token Error:\n ${data.response_message || "Unknown error"}`);
-        }
-
-        return data.access_token;
-    } catch (error) {
-        console.error("❌ Error fetching token:", error); 
-        swal({ title: "Error", text: error.message, icon: "error" });
-    }
-}
+ 

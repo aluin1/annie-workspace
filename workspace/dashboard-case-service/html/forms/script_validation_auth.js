@@ -1,43 +1,45 @@
 import CONFIG from './config_data_case.js';
- 
-const URL_VALIDATION_TOKEN_GMAIL =  CONFIG.URL_VALIDATION_TOKEN_GMAIL;
 
+const URL_VALIDATION_TOKEN_GMAIL = CONFIG.URL_VALIDATION_TOKEN_GMAIL;
 
- 
-
+// Fungsi utama dari Google Sign-In
 export async function handleCredentialResponse(response) {
-    //console.log("📥 Google JWT Token:", response.credential);
-    await ValidationToken(response.credential);
+    if (response && response.credential) {
+        await validateToken(response.credential);
+    } else {
+        console.error("❌ No credential received.");
+    }
 }
 
- 
-async function ValidationToken(tokenGmail) {
-
-    // Siapkan request untuk dikirim ke backend
+// Validasi token ke backend
+async function validateToken(tokenGmail) {
     const requestData = { token: tokenGmail };
-    console.log("📤 Request Validation Auth Token:", requestData);
+    console.log("📤 Sending token for validation:", requestData);
+
+    swal({ title: "Validating token...", text: "Please wait...", icon: "info", buttons: false });
 
     try {
-        const response = await fetch(`${URL_VALIDATION_TOKEN_GMAIL}`, {
+        const response = await fetch(URL_VALIDATION_TOKEN_GMAIL, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(requestData),
         });
 
-        
         const data = await response.json();
 
         if (!response.ok) {
-            throw new Error(`${response.status} - ${response.statusText} \n ${data.response_message}`);
+            throw new Error(`${response.status} ${response.statusText}\n${data.response_message}`);
         }
 
-
         if (data && data.email) {
-            console.log("✅ Token Valid Account:", data.email); 
+            console.log("✅ Token valid:", data.email);
+
             localStorage.setItem("google_jwt_token", tokenGmail);
             localStorage.setItem("email", data.email);
             localStorage.setItem("name", data.name);
             localStorage.setItem("picture", data.picture);
+
+            swal.close();
 
             await swal({
                 title: "Success",
@@ -46,23 +48,24 @@ async function ValidationToken(tokenGmail) {
                 button: "OK"
             });
 
-            window.location.href = "data_case.html"; // Redirect setelah klik OK
-            return true; // Token valid
+            window.location.href = "data_case.html";
+            return true;
         } else {
-            throw new Error(data.response_message);
+            throw new Error(data.response_message || "Unknown server response.");
         }
+
     } catch (err) {
-        console.error("❌ Error validate token:", err);
-        // swal.close();
+        console.error("❌ Token validation failed:", err.message);
+        swal.close();
 
         await swal({
-            title: "Credential Failed",
+            title: "Login Failed",
             text: err.message,
             icon: "error",
-            buttons: { confirm: { className: "btn btn-danger" } }
+            button: "OK"
         });
- 
+
         window.location.href = "login.html";
-        return false; // Token tidak valid
+        return false;
     }
 }

@@ -2,12 +2,16 @@ package api
 
 import (
 	"os"
+	"strconv"
+	"time"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	"gopkg.in/resty.v1"
 )
 
 var headerAuth = "Authorization"
+var clientRest *resty.Client
 
 // ConfigRouter configure API router
 func ConfigRouter() *echo.Echo {
@@ -31,6 +35,14 @@ func ConfigRouter() *echo.Echo {
 	e.GET("/ping", ping)
 	e.POST("/uploadFiles", UploadFiles)
 	e.POST("/validationTokenGmail", HandleValidationTokenGmail)
+	e.POST("/GetDataAnnie", HandleGetDataAnnie)
+	e.POST("/UploadFilesCloud", UploadFilesCloud)
+
+	// config iso rest client
+	clientTimeout, _ := strconv.Atoi(os.Getenv("ANNIE_TIMEOUT_SECOND"))
+	clientRest = resty.New()
+	clientRest.SetTimeout(time.Duration(clientTimeout) * time.Second)
+	clientRest.SetDebug(true)
 
 	return e
 }

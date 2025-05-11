@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>DR. ANNIE VIP Services - Insert Case</title>
+    <meta
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+      name="viewport"
+    />
+    <!-- <link
+      rel="icon"
+      href="../assets/img/kaiadmin/favicon.ico"
+      type="image/x-icon"
+    /> -->
+
+    <!-- Fonts and icons -->
+    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+      WebFont.load({
+        google: { families: ["Public Sans:300,400,500,600,700"] },
+        custom: {
+          families: [
+            "Font Awesome 5 Solid",
+            "Font Awesome 5 Regular",
+            "Font Awesome 5 Brands",
+            "simple-line-icons",
+          ],
+          urls: ["../assets/css/fonts.min.css"],
+        },
+        active: function () {
+          sessionStorage.fonts = true;
+        },
+      });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/plugins.min.css" />
+    <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
+   
+
+    <style>
+      /* Disable interaction with the dropdown menu */
+.disabled-dropdown {
+    pointer-events: none;  /* Prevent any mouse events (click, hover) */
+    opacity: 0.5; /* Optional: Add a visual cue to indicate the dropdown is disabled */
+}
+.swal-title {
+    font-size: 18px !important; 
+  }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar" data-background-color="dark">
+        <div class="sidebar-logo">
+        
+          <!-- Logo Header -->
+          <div class="logo-header" data-background-color="dark">
+            <a href="../index.html" class="logo">
+              <!-- <img
+                src="../assets/img/kaiadmin/logo_light.svg"
+                alt="navbar brand"
+                class="navbar-brand"
+                height="20"
+              /> -->
+            </a>
+            <div class="nav-toggle">
+              <button class="btn btn-toggle toggle-sidebar">
+                <i class="gg-menu-right"></i>
+              </button>
+              <button class="btn btn-toggle sidenav-toggler">
+                <i class="gg-menu-left"></i>
+              </button>
+            </div>
+            <button class="topbar-toggler more">
+              <i class="gg-more-vertical-alt"></i>
+            </button>
+          </div>
+          <!-- End Logo Header -->
+        </div>
+        <div class="sidebar-wrapper scrollbar scrollbar-inner">
+          <div class="sidebar-content">
+            <ul class="nav nav-secondary">
+              <!-- <li class="nav-item  ">
+                <a href="../index.html">
+                  <i class="fas fa-home"></i>
+                  <p>Dashboard</p> 
+                </a> 
+              </li> -->
+              <li class="nav-section">
+                <span class="sidebar-mini-icon">
+                  <i class="fa fa-ellipsis-h"></i>
+                </span>
+                <h4 class="text-section">Data</h4>
+              </li> 
+            <li class="nav-item active submenu">
+                <a data-bs-toggle="collapse" href="#forms">
+                  <i class="fas fa-pen-square"></i>
+                  <p>Case</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse show" id="forms">
+                  <ul class="nav nav-collapse">
+                    <li class="active">
+                      <a href="../forms/forms_insert.html">
+                        <span class="sub-item">Input Case</span>
+                      </a>
+                    </li>                    
+                    <li>
+                      <a href="../forms/data_case.html">
+                        <span class="sub-item">Data Case</span>
+                      </a>
+                    </li>
+
+                  </ul>
+                </div>
+              </li> 
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- End Sidebar -->
+
+      <div class="main-panel"> 
+
+        <div class="main-header"> <div class="main-header-logo">
+         
+            <!-- Logo Header -->
+            <div class="logo-header" data-background-color="dark">
+              <!-- <a href="index.html" class="logo">
+                <img
+                  src="assets/img/kaiadmin/logo_light.svg"
+                  alt="navbar brand"
+                  class="navbar-brand"
+                  height="20"
+                />
+              </a> -->
+              <div class="nav-toggle">
+                <button class="btn btn-toggle toggle-sidebar">
+                  <i class="gg-menu-right"></i>
+                </button>
+                <button class="btn btn-toggle sidenav-toggler">
+                  <i class="gg-menu-left"></i>
+                </button>
+              </div>
+              <button class="topbar-toggler more">
+                <i class="gg-more-vertical-alt"></i>
+              </button>
+            </div>
+            <!-- End Logo Header -->
+          </div>
+         <!-- Navbar Header -->
+         <nav
+         class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom"
+       >
+         <div class="container-fluid">
+          
+
+           <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
+              <li class="nav-item topbar-user dropdown hidden-caret">
+               <a
+                 class="dropdown-toggle profile-pic"
+                 data-bs-toggle="dropdown"
+                 href="#"
+                 aria-expanded="false"
+               >
+                 <div class="avatar-sm">
+                   <img
+                     src="/var/html/html/assets/img/blank.jpg"
+                     alt="..."
+                     class="avatar-img rounded-circle"
+                   />
+                 </div>
+                 <span class="profile-username">
+                   <span class="op-7"></span>
+                   <span class="fw-bold"></span>
+                 </span>
+               </a>
+
+                
+               <ul class="dropdown-menu dropdown-user animated fadeIn" id="user-dropdown">
+                 <div class="dropdown-user-scroll scrollbar-outer">
+                   <li>
+                     <div class="user-box">
+                       <div class="avatar-lg">
+                         <img
+                           src="/var/html/html/assets/img/blank.jpg"
+                           alt="image profile"
+                           class="avatar-img rounded"
+                         /> 
+                       </div>
+                       <div class="u-text">
+                         <h4></h4>
+                         <p class="text-muted"></p>
+                         <!-- <a
+                           href="profile.html"
+                           class="btn btn-xs btn-secondary btn-sm"
+                           >View Profile</a
+                         > -->
+                       </div>
+                     </div>
+                   </li>
+                   <!-- <li>
+                     <div class="dropdown-divider"></div>
+                     <a class="dropdown-item" href="#">Logout</a>
+                   </li> -->
+                 </div>
+               </ul>
+             </li>
+           </ul>
+         </div>
+       </nav>
+       
+       <!-- End Navbar -->
+     </div> 
+
+        <div class="container"  > 
+            <div class="page-inner">
+              <div class="page-header">
+                <p class="fw-bold mb-2" style="font-size: 1.2rem;"><b>DR. ANNIE VIP Services - Insert Case</b></p>
+                 
+              </div>
+            <div class="row"  >
+              <div class="col-md-12">
+                <div class="card">
+                  <form id="formCase">
+                 
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-6 col-lg-4">
+                        <div class="form-group">
+                          <label for="customer_number">Customer Number</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="customer_number"
+                            placeholder="Enter Customer Number"
+                            
+                          />
+                          <small  class="form-text text-muted"
+                            >Forget your Customer Number, Please email us at <span id="emailSupport"></span></small
+                          >
+                        </div>
+                        <div class="form-group">
+                          <label for="doctor_name">Doctor Name </label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="doctor_name"
+                            placeholder="Enter Doctor Name"
+                            
+                          />
+                          
+                        </div>
+                        <div class="form-group">
+                          <label for="Email">Email</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="email"
+                            placeholder="Enter email"
+                            
+                          />
+                          
+                        </div> 
+
+                        <div class="form-group">
+                          <label>Is this Previous Case?</label><br />
+                          <div class="d-flex">
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="previous_case"
+                                id="previous_case1"
+                                value="Yes"
+                                 
+                              />
+                              <label
+                                class="form-check-label"
+                                for="previous_case1"
+                              >
+                                Yes
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="previous_case"
+                                id="previous_case2" 
+                                value="No"
+                              />
+                              <label
+                                class="form-check-label"
+                                for="previous_case2"
+                              >
+                                No
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+ 
+                        <div class="form-group">
+                          <label for="previous_case_number">Previous Case Number</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="previous_case_number"
+                            placeholder="Enter Previous Case Number"
+                            
+                          />
+                          
+                        </div>
+
+
+                        <div class="form-group">
+                          <label for="patient_name">Patient Name</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="patient_name"
+                            placeholder="Enter Patient Name"
+                            
+                          />
+                          
+                        </div>
+
+                        
+                        <div class="form-group">
+                          <label for="dob">DOB</label>
+                          <input
+                            type="date"
+                            class="form-control"
+                            id="dob" 
+                            name="dob" 
+                            max=""
+                            autocomplete="bday"
+                           
+                          />
+                          
+                        </div>
+
+                        
+                        <div class="form-group">
+                          <label for="height_of_patient">Height of Patient</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="height_of_patient"
+                            placeholder="Enter Height of Patient"
+                           
+                          />
+                          <small  class="form-text text-muted"
+                            >ex: 4 ft 6 in</small
+                          >
+                        </div>
+
+
+                        
+                        <div class="form-group">
+                          <label>Gender</label><br />
+                          <div class="d-flex">
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="gender"
+                                id="gender1"
+                                value="Male"
+                                 
+                              />
+                              <label
+                                class="form-check-label"
+                                for="gender1"
+                              >
+                              Male
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="gender"
+                                id="gender2" 
+                                value="Female"
+                              />
+                              <label
+                                class="form-check-label"
+                                for="gender2"
+                              >
+                              Female
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+
+                      <div class="col-md-6 col-lg-4">
+
+
+                        <div class="form-group">
+                          <label for="defaultSelect">Race</label>
+                          <select
+                            class="form-select form-control"
+                            id="race"
+                          >
+                          <option value="">Choose</option> 
+                            <option value="Black">Black</option> 
+                            <option value="Caucasian"  >Caucasian</option> 
+                            <option value="Caucasian (E)">Caucasian (E)</option> 
+                            <option value="Chinese">Chinese</option> 
+                            <option value="Japanase">Japanase</option> 
+                            <option value="Latin">Latin</option> 
+                            <option value="Mixed">Mixed</option> 
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="defaultSelect">Package List</label>
+                          <select
+                            class="form-select form-control"
+                            id="package_list"
+                          >
+                          <option value="">Choose</option> 
+                            <option value="Black">Black</option> 
+                            <option value="Caucasian"  >Caucasian</option> 
+                            <option value="Caucasian (E)">Caucasian (E)</option> 
+                            <option value="Chinese">Chinese</option> 
+                            <option value="Japanase">Japanase</option> 
+                            <option value="Latin">Latin</option> 
+                            <option value="Mixed">Mixed</option> 
+                          </select>
+                        </div>
+
+                        
+                        <div class="form-group">
+                          <label for="lateral_xray_date">Lateral X-ray Date</label>
+                          <input
+                            type="date"
+                            class="form-control"
+                            id="lateral_xray_date" 
+                            name="lateral_xray_date" 
+                            max=""
+                            
+                          />
+                          
+                        </div>
+
+                        <div class="form-group">
+                          <label for="consult_date">Consult Date</label>
+                          <input
+                            type="date"
+                            class="form-control"
+                            id="consult_date" 
+                            name="consult_date" 
+                            max=""
+                            
+                          />
+                          
+                        </div>
+
+                        
+
+                        <div class="form-group">
+                          <label for="missing_teeth">Missing Teeth</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="missing_teeth" 
+                            
+                          />
+                          
+                        </div>
+
+
+                        
+                        <div class="form-group">
+                          <label>Adenoids Removed</label><br />
+                          <div class="d-flex">
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="adenoids_removed"
+                                id="adenoids_removed1"
+                                value="No"
+                                 
+                              />
+                              <label
+                                class="form-check-label"
+                                for="adenoids_removed1"
+                              >
+                              Yes
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="adenoids_removed"
+                                id="adenoids_removed2" 
+                                value="No"
+                              />
+                              <label
+                                class="form-check-label"
+                                for="adenoids_removed2"
+                              >
+                              No
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+ 
+                        <div class="form-group">
+                          <label for="comment">Comment</label>
+                          <textarea class="form-control" id="comment" rows="5"></textarea>
+                        </div>
+
+ 
+                            
+                      </div>
+                      <div class="col-md-6 col-lg-4">
+                        
+                        <div class="form-group">
+                          <label for="lateral_xray_image">Lateral X-Ray Image</label>
+                          <input
+                            type="file"
+                            class="form-control"
+                            id="lateral_xray_image" 
+                          />
+                          
+                        </div>
+
+                        
+                        
+                        <div class="form-group">
+                          <label for="frontal_xray_image">Frontal X-Ray Image</label>
+                          <input
+                            type="file"
+                            class="form-control"
+                            id="frontal_xray_image" 
+                          />
+                          
+                        </div>
+
+                        
+                        <div class="form-group">
+                          <label for="lower_arch_image">Lower Arch Image</label>
+                          <input
+                            type="file"
+                            class="form-control"
+                            id="lower_arch_image" 
+                          />
+                          
+                        </div>
+                        
+                        
+                        <div class="form-group">
+                          <label for="upper_arch_image">Upper Arch Image</label>
+                          <input
+                            type="file"
+                            class="form-control"
+                            id="upper_arch_image" 
+                          />
+                          
+                        </div>
+
+                        
+                        <div class="form-group">
+                          <label for="handwrist_xray_image">HandWrist X-Ray Image</label>
+                          <input
+                            type="file"
+                            class="form-control"
+                            id="handwrist_xray_image" 
+                          />
+                          
+                        </div>
+
+                        
+                        <div class="form-group">
+                          <label for="panoramic_xray_image">Panoramic X-Ray (Panorex) Image</label>
+                          <input
+                            type="file"
+                            class="form-control"
+                            id="panoramic_xray_image" 
+                          />
+                          
+                        </div>
+
+                        
+                        
+                        <div class="form-group">
+                          <label for="additional_record_1">Additional Record 1</label>
+                          <input
+                            type="file"
+                            class="form-control"
+                            id="additional_record_1" 
+                          />
+                          
+                        </div>
+
+                        
+                        
+                        <div class="form-group">
+                          <label for="additional_record_2">Additional Record 2</label>
+                          <input
+                            type="file"
+                            class="form-control"
+                            id="additional_record_2" 
+                          />
+                          
+                        </div>
+
+                        
+                        
+                        <div class="form-group">
+                          <label for="additional_record_3">Additional Record 3</label>
+                          <input
+                            type="file"
+                            class="form-control"
+                            id="additional_record_3" 
+                          />
+                          
+                        </div>
+
+                        
+                        
+                        <div class="form-group">
+                          <label for="additional_record_4">Additional Record 4</label>
+                          <input
+                            type="file"
+                            class="form-control"
+                            id="additional_record_4" 
+                          />
+                          
+                        </div>
+
+                        
+                        
+                        <div class="form-group">
+                          <label for="additional_record_5">Additional Record 5</label>
+                          <input
+                            type="file"
+                            class="form-control"
+                            id="additional_record_5" 
+                          />
+                          
+                        </div>
+
+
+                        
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-action" style="text-align: right;">
+                    <button class="btn btn-info" id="submit_btn">Submit</button>
+                    <button class="btn btn-danger">Cancel</button>
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+         
+      </div>
+ 
+    </div>
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+ 
+    <!-- jQuery Sparkline -->
+    <script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Chart Circle -->
+    <script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+ 
+ 
+      
+    <!-- Sweet Alert -->
+    <script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+    <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+
+
+    <!-- Kaiadmin JS -->
+    <script src="../assets/js/kaiadmin.min.js"></script>
+ 
+
+    <script type="module" src="./get_data_from_annie.js"></script>
+
+    <script>
+      // Atur nilai maksimal agar pengguna tidak bisa memilih tanggal di masa depan
+      document.getElementById("dob").max = new Date().toISOString().split("T")[0];
+  </script>
+  
+  </body>
+</html>

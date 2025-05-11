@@ -3,6 +3,7 @@ module case-service
 go 1.21
 
 require (
+	github.com/cloudinary/cloudinary-go/v2 v2.9.1
 	github.com/go-sql-driver/mysql v1.7.0
 	github.com/golang-jwt/jwt/v4 v4.5.2
 	github.com/golang-jwt/jwt/v5 v5.2.1
@@ -13,13 +14,16 @@ require (
 	github.com/rs/zerolog v1.33.0
 	github.com/sirupsen/logrus v1.9.3
 	gopkg.in/asaskevich/govalidator.v8 v8.0.0-20171111151018-521b25f4b05f
+	gopkg.in/resty.v1 v1.12.0
 	gorm.io/driver/mysql v1.5.7
 	gorm.io/driver/postgres v1.5.11
 	gorm.io/gorm v1.25.12
 )
 
 require (
+	github.com/creasty/defaults v1.7.0 // indirect
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
+	github.com/gorilla/schema v1.4.1 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20221227161230-091c0ba34f0a // indirect
 	github.com/jackc/pgx/v5 v5.5.5 // indirect
