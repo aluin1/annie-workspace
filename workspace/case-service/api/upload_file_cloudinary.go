@@ -84,7 +84,7 @@ func UploadFilesCloud(c echo.Context) error {
 		}
 		defer src.Close()
 
-		publicID := fmt.Sprintf("%s/%s-%s", folderCloud, uuid.New().String(), time.Now().Format("20060102150405"))
+		publicID := fmt.Sprintf("%s-%s", uuid.New().String(), time.Now().Format("20060102150405"))
 
 		// Log upload parameters
 		log.Info().Str("PublicID", publicID).Str("Folder", folderCloud).Msg("Uploading to Cloudinary")
