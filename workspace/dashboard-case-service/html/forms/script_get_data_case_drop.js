@@ -140,6 +140,18 @@ document.addEventListener("click", function(event) {
         console.log("📄 Case Data:", caseData);
 
         const dateCompleted = formatDate(caseData.time_create);
+        const LateralXrayImage =  caseData.lateral_xray_image;
+        const FrontalXrayImage = caseData.frontal_xray_image;
+        const LowerArchImage= caseData.lower_arch_image;
+        const UpperArchImage = caseData.upper_arch_image;
+        const HandwristXrayImage = caseData.handwrist_xray_image;
+        const PanoramicXrayImage = caseData.panoramic_xray_image;
+        const AdditionalRecord1 = caseData.additional_record_1;
+        const AdditionalRecord2 = caseData.additional_record_2;
+        const AdditionalRecord3 = caseData.additional_record_3;
+        const AdditionalRecord4 = caseData.additional_record_4;
+        const AdditionalRecord5 = caseData.additional_record_5;
+
         let detailHtml = `
             <h6><b>Completed: <br>${dateCompleted}</b></h6>
             <h6><b>Annie VIP Order Form: </b></h6>
@@ -173,29 +185,82 @@ document.addEventListener("click", function(event) {
                      <td><strong>Lateral X-ray Date</strong></td><td> ${formatDateOnly(caseData.lateral_xray_date)}</td>
                     </tr> 
                
+                   
+                    <tr>
+                    <td><strong>Lateral X-Ray Image:</strong></td><td><img src="${LateralXrayImage}" style="${LateralXrayImage ? '' : 'display:none'}"  width="100%">
+                    <br><a href ="${LateralXrayImage}" target="_blank"  style="${LateralXrayImage ? '' : 'display:none'}" ><button class="btn btn-info mt-3">View</button></a>
+                    </td> 
+
+
+                    <td><strong>Frontal X-Ray Image:</strong></td><td><img src="${FrontalXrayImage}" style="${FrontalXrayImage ? '' : 'display:none'}" width="100%">
+                    <br><a href ="${FrontalXrayImage}" target="_blank" style="${FrontalXrayImage ? '' : 'display:none'}" ><button class="btn btn-info mt-3">View</button></a> 
+                    </td> 
+
+
+                    </tr> 
+                    <tr>
+
+
+                    <td><strong>Lower Arch Image:</strong></td><td><img src="${LowerArchImage}" width="100%" style="${LowerArchImage ? '' : 'display:none'}" >
+                    <br><a href ="${LowerArchImage}" target="_blank" style="${LowerArchImage ? '' : 'display:none'}" ><button class="btn btn-info mt-3">View</button></a> 
+                    </td> 
+
                     
-                    <tr>
-                    <td><strong>Lateral X-Ray Image:</strong></td><td><img src='${caseData.lateral_xray_image}' width='100%'><br><a href ='${caseData.lateral_xray_image}' target='_blank'><button class='btn btn-info mt-3'>View</button> </td> 
-                    <td><strong>Frontal X-Ray Image:</strong></td><td><img src='${caseData.frontal_xray_image}' width='100%'><br><a href ='${caseData.frontal_xray_image}' target='_blank'><button class='btn btn-info mt-3'>View</button> </td> 
+					<td><strong>Upper Arch Image:</strong></td><td><img src="${UpperArchImage}" width="100%" style="${UpperArchImage ? '' : 'display:none'}" >
+                    <br><a href ="${UpperArchImage}" target="_blank" style="${UpperArchImage ? '' : 'display:none'}" ><button class="btn btn-info mt-3">View</button></a> 
+                    </td> 
+
+
                     </tr> 
                     <tr>
-                    <td><strong>Lower Arch Image:</strong></td><td><img src='${caseData.lower_arch_image}' width='100%'><br><a href ='${caseData.lower_arch_image}' target='_blank'><button class='btn btn-info mt-3'>View</button> </td> 
-					<td><strong>Upper Arch Image:</strong></td><td><img src='${caseData.upper_arch_image}' width='100%'><br><a href ='${caseData.upper_arch_image}' target='_blank'><button class='btn btn-info mt-3'>View</button> </td> 
+
+
+                    <td><strong>HandWrist X-Ray Image:</strong></td><td><img src="${HandwristXrayImage}" width="100%" style="${HandwristXrayImage ? '' : 'display:none'}" >
+                    <br><a href ="${HandwristXrayImage}" target="_blank" style="${HandwristXrayImage ? '' : 'display:none'}" ><button class="btn btn-info mt-3">View</button></a> 
+                    </td> 
+
+ 
+                    <td><strong>Panoramic Xray Image:</strong></td><td><img src="${PanoramicXrayImage}" width="100%" style="${PanoramicXrayImage ? '' : 'display:none'}" >
+                    <br><a href ="${PanoramicXrayImage}" target="_blank" style="${PanoramicXrayImage ? '' : 'display:none'}" ><button class="btn btn-info mt-3">View</button></a> 
+                    </td> 
+
+
                     </tr> 
                     <tr>
-                    <td><strong>HandWrist X-Ray Image:</strong></td><td><img src='${caseData.handwrist_xray_image}' width='100%'><br><a href ='${caseData.handwrist_xray_image}' target='_blank'><button class='btn btn-info mt-3'>View</button> </td> 
-					<td><strong>Panoramic X-Ray (Panorex) Image:</strong></td><td><img src='${caseData.panoramic_xray_image}' width='100%'><br><a href ='${caseData.panoramic_xray_image}' target='_blank'><button class='btn btn-info mt-3'>View</button> </td> 
+
+                    <td><strong>Additional Record 1:</strong></td><td><img src="${AdditionalRecord1}" width="100%" style="${AdditionalRecord1 ? '' : 'display:none'}" >
+                    <br><a href ="${AdditionalRecord1}" target="_blank" style="${AdditionalRecord1 ? '' : 'display:none'}" ><button class="btn btn-info mt-3">View</button></a> 
+                    </td> 
+
+                    <td><strong>Additional Record 2:</strong></td><td><img src="${AdditionalRecord2}" width="100%" style="${AdditionalRecord2 ? '' : 'display:none'}" >
+                    <br><a href ="${AdditionalRecord2}" target="_blank" style="${AdditionalRecord2 ? '' : 'display:none'}" ><button class="btn btn-info mt-3">View</button></a> 
+                    </td> 
+ 
+
+
                     </tr> 
                     <tr>
-                    <td><strong>Additional Record 1:</strong></td><td><img src='${caseData.additional_record_1}' width='100%'><br><a href ='${caseData.additional_record_1}' target='_blank'><button class='btn btn-info mt-3'>View</button> </td> 
-					<td><strong>Additional Record 2:</strong></td><td><img src='${caseData.additional_record_2}' width='100%'><br><a href ='${caseData.additional_record_2}' target='_blank'><button class='btn btn-info mt-3'>View</button> </td> 
+
+
+                    <td><strong>Additional Record 3:</strong></td><td><img src="${AdditionalRecord3}" width="100%" style="${AdditionalRecord3 ? '' : 'display:none'}" >
+                    <br><a href ="${AdditionalRecord3}" target="_blank" style="${AdditionalRecord3 ? '' : 'display:none'}" ><button class="btn btn-info mt-3">View</button></a> 
+                    </td> 
+
+                    <td><strong>Additional Record 4:</strong></td><td><img src="${AdditionalRecord4}" width="100%" style="${AdditionalRecord4 ? '' : 'display:none'}" >
+                    <br><a href ="${AdditionalRecord4}" target="_blank" style="${AdditionalRecord4 ? '' : 'display:none'}" ><button class="btn btn-info mt-3">View</button></a> 
+                    </td> 
+ 
+
+
                     </tr> 
                     <tr>
-                    <td><strong>Additional Record 3:</strong></td><td><img src='${caseData.additional_record_3}' width='100%'><br><a href ='${caseData.additional_record_3}' target='_blank'><button class='btn btn-info mt-3'>View</button> </td> 
-					<td><strong>Additional Record 4:</strong></td><td><img src='${caseData.additional_record_4}' width='100%'><br><a href ='${caseData.additional_record_4}' target='_blank'><button class='btn btn-info mt-3'>View</button> </td> 
-                    </tr> 
-                    <tr>
-                    <td><strong>Additional Record 5:</strong></td><td><img src='${caseData.additional_record_5}' width='100%'><br><a href ='${caseData.additional_record_5}' target='_blank'><button class='btn btn-info mt-3'>View</button> </td> 
+
+
+                    <td><strong>Additional Record 5:</strong></td><td><img src="${AdditionalRecord5}" width="100%" style="${AdditionalRecord5 ? '' : 'display:none'}" >
+                    <br><a href ="${AdditionalRecord5}" target="_blank" style="${AdditionalRecord5 ? '' : 'display:none'}" ><button class="btn btn-info mt-3">View</button></a> 
+                    </td> 
+ 
+
 					   <td></td><td></td>
                     </tr> 
                 <tr>
