@@ -87,7 +87,7 @@ async function fetchData() {
     document.getElementById("patient_name_TEXT").textContent = dataFirst["PatientName"];
     document.getElementById("patient_name").value = dataFirst["PatientName"];
     
-    document.getElementById("dob_TEXT").textContent = toInputDateValue(dataFirst["PatientBirthDate"]);;
+    document.getElementById("dob_TEXT").textContent =formatDateOnly( toInputDateValue(dataFirst["PatientBirthDate"]));
     document.getElementById("dob").value = toInputDateValue(dataFirst["PatientBirthDate"]);;
     
     document.getElementById("height_of_patient_TEXT").textContent = dataFirst["PatientHeight"];
@@ -102,10 +102,10 @@ async function fetchData() {
     document.getElementById("package_list").value = "D1 Comprehensive";
     
     
-    document.getElementById("lateral_xray_date_TEXT").textContent = toInputDateValue(dataFirst["Image_Lateral_Date"]);
+    document.getElementById("lateral_xray_date_TEXT").textContent =formatDateOnly( toInputDateValue(dataFirst["Image_Lateral_Date"]));
     document.getElementById("lateral_xray_date").value =toInputDateValue(dataFirst["Image_Lateral_Date"]);
 
-    document.getElementById("consult_date_TEXT").textContent = toInputDateValue(dataFirst["TimePointDate"]);
+    document.getElementById("consult_date_TEXT").textContent = formatDateOnly(toInputDateValue(dataFirst["TimePointDate"]));
     document.getElementById("consult_date").value =  toInputDateValue(dataFirst["TimePointDate"]);
     
     document.getElementById("missing_teeth_TEXT").textContent =  dataFirst["IsMissingTeeth"];
@@ -320,3 +320,13 @@ function TranslateYesNo(value) {
   return radiosValue
 }
 
+
+// ✅ **Fungsi Format Tanggal**
+function formatDateOnly(dateString) {
+  const date = new Date(dateString.replace(" ", "T")); // Pastikan format ISO
+  return date.toLocaleString("en-GB", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+  });
+}
