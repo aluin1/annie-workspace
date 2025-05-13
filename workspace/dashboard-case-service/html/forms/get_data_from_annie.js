@@ -135,45 +135,57 @@ async function fetchData() {
     document.getElementById("comment_TEXT").textContent =  dataFirst["Comment"];
     document.getElementById("comment").value = dataFirst["Comment"];
 
-    document.getElementById("lateral_xray_image_IMG").src = dataFirst["Image_Lateral"];
-    document.getElementById("lateral_xray_image").value = dataFirst["Image_Lateral"];
+    
+    const noImage="https://placehold.co/600x400?text=No+Image";
+    
+   const Image_Lateral= dataFirst["Image_Lateral"];
+    document.getElementById("lateral_xray_image_IMG").src = Image_Lateral  ? Image_Lateral  : noImage;
+    document.getElementById("lateral_xray_image").value = Image_Lateral;
 
-    document.getElementById("frontal_xray_image_IMG").src = dataFirst["Image_Frontal"];
-    document.getElementById("frontal_xray_image").value =dataFirst["Image_Frontal"];
+    const Image_Frontal= dataFirst["Image_Frontal"];
+    document.getElementById("frontal_xray_image_IMG").src = Image_Frontal  ? Image_Frontal  : noImage;
+    document.getElementById("frontal_xray_image").value =Image_Frontal;
 
 
-    document.getElementById("lower_arch_image_IMG").src = dataFirst["Image_Lower"];
-    document.getElementById("lower_arch_image").value = dataFirst["Image_Lower"];
+    const Image_Lower= dataFirst["Image_Lower"];
+    document.getElementById("lower_arch_image_IMG").src =  Image_Lower  ? Image_Lower  : noImage;
+    document.getElementById("lower_arch_image").value = Image_Lower;
 
 
-    document.getElementById("upper_arch_image_IMG").src = dataFirst["Image_Upper"];
-    document.getElementById("upper_arch_image").value = dataFirst["Image_Upper"];
+    const Image_Upper= dataFirst["Image_Upper"];
+    document.getElementById("upper_arch_image_IMG").src =  Image_Upper  ? Image_Upper  : noImage;
+    document.getElementById("upper_arch_image").value =Image_Upper;
 
     //belum ada mapping
-    document.getElementById("handwrist_xray_image_IMG").src = "";
-    document.getElementById("handwrist_xray_image").value = "";
+    document.getElementById("handwrist_xray_image_IMG").src = noImage;
+    document.getElementById("handwrist_xray_image").value = noImage;
 
 
-    document.getElementById("panoramic_xray_image_IMG").src = dataFirst["Image_Panoramic"];
-    document.getElementById("panoramic_xray_image").value = dataFirst["Image_Panoramic"];
+   const Image_Panoramic= dataFirst["Image_Panoramic"];
+
+    document.getElementById("panoramic_xray_image_IMG").src = Image_Panoramic  ? Image_Panoramic  : noImage;
+    document.getElementById("panoramic_xray_image").value = Image_Panoramic;
 
     
-    document.getElementById("additional_record_1_IMG").src = dataFirst["Image_Profile"];
-    document.getElementById("additional_record_1").value = dataFirst["Image_Profile"];
+    const Image_Profile= dataFirst["Image_Profile"];
+    document.getElementById("additional_record_1_IMG").src =  Image_Profile  ? Image_Profile  : noImage;
+    document.getElementById("additional_record_1").value = Image_Profile
     
-    document.getElementById("additional_record_2_IMG").src = dataFirst["Image_ProfileSmile"];
-    document.getElementById("additional_record_2").value =  dataFirst["Image_ProfileSmile"];
+    const Image_ProfileSmile= dataFirst["Image_ProfileSmile"];
+    document.getElementById("additional_record_2_IMG").src = Image_ProfileSmile  ? Image_ProfileSmile  : noImage;
+    document.getElementById("additional_record_2").value =  Image_ProfileSmile;
 
-    document.getElementById("additional_record_3_IMG").src = dataFirst["Image_ProfileNoSmile"];
-    document.getElementById("additional_record_3").value =  dataFirst["Image_ProfileNoSmile"];
+    const Image_ProfileNoSmile= dataFirst["Image_ProfileNoSmile"];
+    document.getElementById("additional_record_3_IMG").src =  Image_ProfileNoSmile  ? Image_ProfileNoSmile  : noImage;
+    document.getElementById("additional_record_3").value =  Image_ProfileNoSmile;
     
     //belum ada mapping
-    document.getElementById("additional_record_4_IMG").src ="";
-    document.getElementById("additional_record_4").value = "";
+    document.getElementById("additional_record_4_IMG").src = noImage;
+    document.getElementById("additional_record_4").value = noImage;
 
     //belum ada mapping
-    document.getElementById("additional_record_5_IMG").src ="";
-    document.getElementById("additional_record_5").value = "";
+    document.getElementById("additional_record_5_IMG").src = noImage;
+    document.getElementById("additional_record_5").value = noImage;
 
     
 
