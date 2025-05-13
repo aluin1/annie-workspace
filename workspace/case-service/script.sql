@@ -44,3 +44,7 @@ CREATE TABLE IF NOT EXISTS public.tb_user (
 
 ALTER TABLE IF EXISTS public.tb_user
     OWNER TO postgres;
+
+
+
+insert into tb_user (email,active) values ('alwinalwin57@gmail.com','1')

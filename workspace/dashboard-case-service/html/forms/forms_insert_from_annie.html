@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>DR. ANNIE VIP Services - Insert Case</title>
+    <title>DR. ANNIE VIP Services - Insert Case From Annie Insight</title>
     <meta
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
       name="viewport"
@@ -232,43 +232,55 @@
                       <div class="col-md-6 col-lg-4">
                         <div class="form-group">
                           <label for="customer_number">Customer Number</label>
+                          <b><p id="customer_number_TEXT" class="form-text"></p></b>
                           <input
                             type="text"
                             class="form-control"
                             id="customer_number"
                             placeholder="Enter Customer Number"
-                            
+                            hidden
                           />
-                          <small  class="form-text text-muted"
-                            >Forget your Customer Number, Please email us at <span id="emailSupport"></span></small
-                          >
+                          
                         </div>
                         <div class="form-group">
                           <label for="doctor_name">Doctor Name </label>
+                          <b><p id="doctor_name_TEXT" class="form-text"></p></b>
                           <input
                             type="text"
                             class="form-control"
                             id="doctor_name"
                             placeholder="Enter Doctor Name"
-                            
+                            hidden
                           />
                           
                         </div>
                         <div class="form-group">
                           <label for="Email">Email</label>
+                          <b><p id="email_TEXT" class="form-text"></p></b> 
                           <input
                             type="text"
                             class="form-control"
                             id="email"
                             placeholder="Enter email"
-                            
+                            hidden
                           />
                           
                         </div> 
 
                         <div class="form-group">
                           <label>Is this Previous Case?</label><br />
-                          <div class="d-flex">
+                          
+                          <b><p id="previous_case_TEXT" class="form-text"></p></b>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="previous_case"
+                            placeholder="Enter Customer Number"
+                            hidden
+                          />
+
+                          
+                          <!-- <div class="d-flex">
                             <div class="form-check">
                               <input
                                 class="form-check-input"
@@ -300,17 +312,18 @@
                                 No
                               </label>
                             </div>
-                          </div>
+                          </div> -->
                         </div>
  
                         <div class="form-group">
                           <label for="previous_case_number">Previous Case Number</label>
+                          <b><p id="previous_case_number_TEXT" class="form-text"></p></b>
                           <input
                             type="text"
                             class="form-control"
                             id="previous_case_number"
                             placeholder="Enter Previous Case Number"
-                            
+                            hidden
                           />
                           
                         </div>
@@ -318,12 +331,13 @@
 
                         <div class="form-group">
                           <label for="patient_name">Patient Name</label>
+                          <b>   <p id="patient_name_TEXT" class="form-text"></p></b>
                           <input
                             type="text"
                             class="form-control"
                             id="patient_name"
                             placeholder="Enter Patient Name"
-                            
+                            hidden
                           />
                           
                         </div>
@@ -331,6 +345,7 @@
                         
                         <div class="form-group">
                           <label for="dob">DOB</label>
+                          <b>   <p id="dob_TEXT" class="form-text"></p></b>
                           <input
                             type="date"
                             class="form-control"
@@ -338,6 +353,7 @@
                             name="dob" 
                             max=""
                             autocomplete="bday"
+                            hidden
                            
                           />
                           
@@ -346,23 +362,32 @@
                         
                         <div class="form-group">
                           <label for="height_of_patient">Height of Patient</label>
+                          <b>   <p id="height_of_patient_TEXT" class="form-text"></p></b>
                           <input
                             type="text"
                             class="form-control"
                             id="height_of_patient"
                             placeholder="Enter Height of Patient"
-                           
+                            hidden
                           />
-                          <small  class="form-text text-muted"
-                            >ex: 4 ft 6 in</small
-                          >
+                          
                         </div>
 
 
                         
                         <div class="form-group">
                           <label>Gender</label><br />
-                          <div class="d-flex">
+                          
+                          <b><p id="gender_TEXT" class="form-text"></p></b>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="gender"
+                            placeholder="Enter Customer Number"
+                            hidden
+                          />
+
+                          <!-- <div class="d-flex">
                             <div class="form-check">
                               <input
                                 class="form-check-input"
@@ -394,7 +419,7 @@
                               Female
                               </label>
                             </div>
-                          </div>
+                          </div> -->
                         </div>
 
                       </div>
@@ -404,6 +429,15 @@
 
                         <div class="form-group">
                           <label for="defaultSelect">Race</label>
+                          <b>   <p id="race_TEXT" class="form-text"></p></b>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="race"
+                            placeholder="Enter Height of Patient"
+                            hidden
+                          />
+<!--                           
                           <select
                             class="form-select form-control"
                             id="race"
@@ -416,48 +450,60 @@
                             <option value="Japanase">Japanase</option> 
                             <option value="Latin">Latin</option> 
                             <option value="Mixed">Mixed</option> 
-                          </select>
+                          </select> -->
                         </div>
 
                         <div class="form-group">
                           <label for="defaultSelect">Package List</label>
+                          
+                          <b>   <p id="package_list_TEXT" class="form-text"></p></b>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="package_list"
+                            placeholder="Enter Height of Patient"
+                            hidden
+                          />
+<!-- 
                           <select
                             class="form-select form-control"
                             id="package_list"
                           >
                           <option value="">Choose</option> 
-                            <option value="Black">Black</option> 
-                            <option value="Caucasian"  >Caucasian</option> 
-                            <option value="Caucasian (E)">Caucasian (E)</option> 
-                            <option value="Chinese">Chinese</option> 
-                            <option value="Japanase">Japanase</option> 
-                            <option value="Latin">Latin</option> 
-                            <option value="Mixed">Mixed</option> 
-                          </select>
+                            <option value="D1 Comprehensive">D1 Comprehensive</option> 
+                            <option value="Lateral Tracing Only"  >Lateral Tracing Only</option> 
+                            <option value="Lateral and Frontal Tracing<">Lateral and Frontal Tracing</option> 
+                            <option value="Visual Package">Visual Package</option> 
+                            <option value="E Package (Lateral/Frontal/Growth to Maturity)">E Package (Lateral/Frontal/Growth to Maturity)</option> 
+                            <option value="Height Prediction">Height Prediction</option> 
+                          </select> -->
                         </div>
 
                         
                         <div class="form-group">
                           <label for="lateral_xray_date">Lateral X-ray Date</label>
+                          <b>   <p id="lateral_xray_date_TEXT" class="form-text"></p></b>
                           <input
                             type="date"
                             class="form-control"
                             id="lateral_xray_date" 
                             name="lateral_xray_date" 
                             max=""
-                            
+                            hidden
                           />
                           
                         </div>
 
                         <div class="form-group">
                           <label for="consult_date">Consult Date</label>
+                          <b>   <p id="consult_date_TEXT" class="form-text"></p></b>
                           <input
                             type="date"
                             class="form-control"
                             id="consult_date" 
                             name="consult_date" 
                             max=""
+                            hidden
                             
                           />
                           
@@ -467,11 +513,12 @@
 
                         <div class="form-group">
                           <label for="missing_teeth">Missing Teeth</label>
+                          <b>   <p id="missing_teeth_TEXT" class="form-text"></p></b>
                           <input
                             type="text"
                             class="form-control"
                             id="missing_teeth" 
-                            
+                            hidden
                           />
                           
                         </div>
@@ -480,6 +527,17 @@
                         
                         <div class="form-group">
                           <label>Adenoids Removed</label><br />
+                          
+                          
+                          <b><p id="adenoids_removed_TEXT" class="form-text"></p></b>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="adenoids_removed"
+                            placeholder="Enter Customer Number"
+                            hidden
+                          />
+<!-- 
                           <div class="d-flex">
                             <div class="form-check">
                               <input
@@ -487,7 +545,7 @@
                                 type="radio"
                                 name="adenoids_removed"
                                 id="adenoids_removed1"
-                                value="No"
+                                value="Yes"
                                  
                               />
                               <label
@@ -512,12 +570,13 @@
                               No
                               </label>
                             </div>
-                          </div>
+                          </div> -->
                         </div>
  
                         <div class="form-group">
                           <label for="comment">Comment</label>
-                          <textarea class="form-control" id="comment" rows="5"></textarea>
+                          <b>   <p id="comment_TEXT" class="form-text"></p></b>
+                          <textarea class="form-control" id="comment" rows="5" hidden></textarea>
                         </div>
 
  
@@ -527,8 +586,9 @@
                         
                         <div class="form-group">
                           <label for="lateral_xray_image">Lateral X-Ray Image</label>
+                          <img id="lateral_xray_image_IMG" src="" width="300">
                           <input
-                            type="file"
+                            type="hidden"
                             class="form-control"
                             id="lateral_xray_image" 
                           />
@@ -539,8 +599,9 @@
                         
                         <div class="form-group">
                           <label for="frontal_xray_image">Frontal X-Ray Image</label>
+                          <img id="frontal_xray_image_IMG" src="" width="300">
                           <input
-                            type="file"
+                            type="hidden"
                             class="form-control"
                             id="frontal_xray_image" 
                           />
@@ -550,8 +611,9 @@
                         
                         <div class="form-group">
                           <label for="lower_arch_image">Lower Arch Image</label>
+                          <img id="lower_arch_image_IMG" src="" width="300">
                           <input
-                            type="file"
+                            type="hidden"
                             class="form-control"
                             id="lower_arch_image" 
                           />
@@ -561,8 +623,9 @@
                         
                         <div class="form-group">
                           <label for="upper_arch_image">Upper Arch Image</label>
+                          <img id="upper_arch_image_IMG" src="" width="300">
                           <input
-                            type="file"
+                            type="hidden"
                             class="form-control"
                             id="upper_arch_image" 
                           />
@@ -572,8 +635,9 @@
                         
                         <div class="form-group">
                           <label for="handwrist_xray_image">HandWrist X-Ray Image</label>
+                          <img id="handwrist_xray_image_IMG" src="" width="300">
                           <input
-                            type="file"
+                            type="hidden"
                             class="form-control"
                             id="handwrist_xray_image" 
                           />
@@ -583,8 +647,9 @@
                         
                         <div class="form-group">
                           <label for="panoramic_xray_image">Panoramic X-Ray (Panorex) Image</label>
+                          <img id="panoramic_xray_image_IMG" src="" width="300">
                           <input
-                            type="file"
+                            type="hidden"
                             class="form-control"
                             id="panoramic_xray_image" 
                           />
@@ -595,8 +660,9 @@
                         
                         <div class="form-group">
                           <label for="additional_record_1">Additional Record 1</label>
+                          <img id="additional_record_1_IMG" src="" width="300">
                           <input
-                            type="file"
+                            type="hidden"
                             class="form-control"
                             id="additional_record_1" 
                           />
@@ -607,8 +673,9 @@
                         
                         <div class="form-group">
                           <label for="additional_record_2">Additional Record 2</label>
+                          <img id="additional_record_2_IMG" src="" width="300">
                           <input
-                            type="file"
+                            type="hidden"
                             class="form-control"
                             id="additional_record_2" 
                           />
@@ -619,8 +686,9 @@
                         
                         <div class="form-group">
                           <label for="additional_record_3">Additional Record 3</label>
+                          <img id="additional_record_3_IMG" src="" width="300">
                           <input
-                            type="file"
+                            type="hidden"
                             class="form-control"
                             id="additional_record_3" 
                           />
@@ -631,8 +699,9 @@
                         
                         <div class="form-group">
                           <label for="additional_record_4">Additional Record 4</label>
+                          <img id="additional_record_4_IMG" src="" width="300">
                           <input
-                            type="file"
+                            type="hidden"
                             class="form-control"
                             id="additional_record_4" 
                           />
@@ -643,8 +712,9 @@
                         
                         <div class="form-group">
                           <label for="additional_record_5">Additional Record 5</label>
+                          <img id="additional_record_5_IMG" src="" width="300">
                           <input
-                            type="file"
+                            type="hidden"
                             class="form-control"
                             id="additional_record_5" 
                           />

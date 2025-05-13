@@ -161,5 +161,12 @@ type GetDataAnnieResponse []struct {
 	UR8                        interface{} `json:"UR8"`
 	LR8                        interface{} `json:"LR8"`
 	LL8                        interface{} `json:"LL8"`
+	DoctorName                interface{} `json:"DoctorName"`
+	PatientName                interface{} `json:"PatientName"`
+	PatientBirthDate           interface{} `json:"PatientBirthDate"`
+	PatientHeight              interface{} `json:"PatientHeight"`
+	PatientGender              interface{} `json:"PatientGender"`
+	PatientRace                interface{} `json:"PatientRace"`
+	PatientAdenoid             interface{} `json:"PatientAdenoid"`
 	DUMMY                      interface{} `json:"DUMMY"`
 }

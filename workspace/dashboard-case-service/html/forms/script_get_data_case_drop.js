@@ -187,12 +187,12 @@ document.addEventListener("click", function(event) {
                
                    
                     <tr>
-                    <td><strong>Lateral X-Ray Image:</strong></td><td><img src="${LateralXrayImage}" style="${LateralXrayImage ? '' : 'display:none'}"  width="100%">
+                    <td style="width: 200;" ><strong>Lateral X-Ray Image:</strong></td><td><img src="${LateralXrayImage}" style="${LateralXrayImage ? '' : 'display:none'}"  width="300">
                     <br><a href ="${LateralXrayImage}" target="_blank"  style="${LateralXrayImage ? '' : 'display:none'}" ><button class="btn btn-info mt-3">View</button></a>
                     </td> 
 
 
-                    <td><strong>Frontal X-Ray Image:</strong></td><td><img src="${FrontalXrayImage}" style="${FrontalXrayImage ? '' : 'display:none'}" width="100%">
+                    <td style="width: 200;"><strong>Frontal X-Ray Image:</strong></td><td><img src="${FrontalXrayImage}" style="${FrontalXrayImage ? '' : 'display:none'}" width="300">
                     <br><a href ="${FrontalXrayImage}" target="_blank" style="${FrontalXrayImage ? '' : 'display:none'}" ><button class="btn btn-info mt-3">View</button></a> 
                     </td> 
 
@@ -201,12 +201,12 @@ document.addEventListener("click", function(event) {
                     <tr>
 
 
-                    <td><strong>Lower Arch Image:</strong></td><td><img src="${LowerArchImage}" width="100%" style="${LowerArchImage ? '' : 'display:none'}" >
+                    <td><strong>Lower Arch Image:</strong></td><td><img src="${LowerArchImage}" width="300" style="${LowerArchImage ? '' : 'display:none'}" >
                     <br><a href ="${LowerArchImage}" target="_blank" style="${LowerArchImage ? '' : 'display:none'}" ><button class="btn btn-info mt-3">View</button></a> 
                     </td> 
 
                     
-					<td><strong>Upper Arch Image:</strong></td><td><img src="${UpperArchImage}" width="100%" style="${UpperArchImage ? '' : 'display:none'}" >
+					<td><strong>Upper Arch Image:</strong></td><td><img src="${UpperArchImage}" width="300" style="${UpperArchImage ? '' : 'display:none'}" >
                     <br><a href ="${UpperArchImage}" target="_blank" style="${UpperArchImage ? '' : 'display:none'}" ><button class="btn btn-info mt-3">View</button></a> 
                     </td> 
 
@@ -215,12 +215,12 @@ document.addEventListener("click", function(event) {
                     <tr>
 
 
-                    <td><strong>HandWrist X-Ray Image:</strong></td><td><img src="${HandwristXrayImage}" width="100%" style="${HandwristXrayImage ? '' : 'display:none'}" >
+                    <td><strong>HandWrist X-Ray Image:</strong></td><td><img src="${HandwristXrayImage}" width="300" style="${HandwristXrayImage ? '' : 'display:none'}" >
                     <br><a href ="${HandwristXrayImage}" target="_blank" style="${HandwristXrayImage ? '' : 'display:none'}" ><button class="btn btn-info mt-3">View</button></a> 
                     </td> 
 
  
-                    <td><strong>Panoramic Xray Image:</strong></td><td><img src="${PanoramicXrayImage}" width="100%" style="${PanoramicXrayImage ? '' : 'display:none'}" >
+                    <td><strong>Panoramic Xray Image:</strong></td><td><img src="${PanoramicXrayImage}" width="300" style="${PanoramicXrayImage ? '' : 'display:none'}" >
                     <br><a href ="${PanoramicXrayImage}" target="_blank" style="${PanoramicXrayImage ? '' : 'display:none'}" ><button class="btn btn-info mt-3">View</button></a> 
                     </td> 
 
@@ -228,11 +228,11 @@ document.addEventListener("click", function(event) {
                     </tr> 
                     <tr>
 
-                    <td><strong>Additional Record 1:</strong></td><td><img src="${AdditionalRecord1}" width="100%" style="${AdditionalRecord1 ? '' : 'display:none'}" >
+                    <td><strong>Additional Record 1:</strong></td><td><img src="${AdditionalRecord1}" width="300" style="${AdditionalRecord1 ? '' : 'display:none'}" >
                     <br><a href ="${AdditionalRecord1}" target="_blank" style="${AdditionalRecord1 ? '' : 'display:none'}" ><button class="btn btn-info mt-3">View</button></a> 
                     </td> 
 
-                    <td><strong>Additional Record 2:</strong></td><td><img src="${AdditionalRecord2}" width="100%" style="${AdditionalRecord2 ? '' : 'display:none'}" >
+                    <td><strong>Additional Record 2:</strong></td><td><img src="${AdditionalRecord2}" width="300" style="${AdditionalRecord2 ? '' : 'display:none'}" >
                     <br><a href ="${AdditionalRecord2}" target="_blank" style="${AdditionalRecord2 ? '' : 'display:none'}" ><button class="btn btn-info mt-3">View</button></a> 
                     </td> 
  
@@ -242,11 +242,11 @@ document.addEventListener("click", function(event) {
                     <tr>
 
 
-                    <td><strong>Additional Record 3:</strong></td><td><img src="${AdditionalRecord3}" width="100%" style="${AdditionalRecord3 ? '' : 'display:none'}" >
+                    <td><strong>Additional Record 3:</strong></td><td><img src="${AdditionalRecord3}" width="300" style="${AdditionalRecord3 ? '' : 'display:none'}" >
                     <br><a href ="${AdditionalRecord3}" target="_blank" style="${AdditionalRecord3 ? '' : 'display:none'}" ><button class="btn btn-info mt-3">View</button></a> 
                     </td> 
 
-                    <td><strong>Additional Record 4:</strong></td><td><img src="${AdditionalRecord4}" width="100%" style="${AdditionalRecord4 ? '' : 'display:none'}" >
+                    <td><strong>Additional Record 4:</strong></td><td><img src="${AdditionalRecord4}" width="300" style="${AdditionalRecord4 ? '' : 'display:none'}" >
                     <br><a href ="${AdditionalRecord4}" target="_blank" style="${AdditionalRecord4 ? '' : 'display:none'}" ><button class="btn btn-info mt-3">View</button></a> 
                     </td> 
  
@@ -256,7 +256,7 @@ document.addEventListener("click", function(event) {
                     <tr>
 
 
-                    <td><strong>Additional Record 5:</strong></td><td><img src="${AdditionalRecord5}" width="100%" style="${AdditionalRecord5 ? '' : 'display:none'}" >
+                    <td><strong>Additional Record 5:</strong></td><td><img src="${AdditionalRecord5}" width="300" style="${AdditionalRecord5 ? '' : 'display:none'}" >
                     <br><a href ="${AdditionalRecord5}" target="_blank" style="${AdditionalRecord5 ? '' : 'display:none'}" ><button class="btn btn-info mt-3">View</button></a> 
                     </td> 
  
